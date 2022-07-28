@@ -17,6 +17,9 @@ final class Api {
     let url_register = "http://127.0.0.1:3333/api/v1/users/register"
     let url_login = "http://127.0.0.1:3333/api/v1/users/login"
     let url_profile = "http://127.0.0.1:3333/api/v1/users/user"
+    let url_queseria = "http://127.0.0.1:3333/api/v1/queseria/index"
+    
+
 
     func Register_user(usuario: User, completionHandler: @escaping (Bool) ->()){
         
@@ -54,8 +57,6 @@ final class Api {
                 do {
                     let json = try JSONDecoder().decode(Response.self, from: data!)
 
-                   //let fjson = try JSONSerialization.jsonObject(with: data!,options: [])
-                    
                     
                     if response.response?.statusCode == 200{
                         completionHandler(.success(json))
@@ -74,11 +75,6 @@ final class Api {
     
     func Profile_user(tkn:Token, completionHandler: @escaping Handler){
         
-        //let headers: HTTPHeaders = [.contentType("application/json")]
-        
- 
-        //AF.request("https://httpbin.org/get", parameters: tkn)
-        
         AF.request(url_profile,parameters: tkn).response{ response in
             debugPrint(response)
             
@@ -87,9 +83,6 @@ final class Api {
                 do {
                     let json = try JSONDecoder().decode(ResponseProfile.self, from: data!)
 
-                   //let fjson = try JSONSerialization.jsonObject(with: data!,options: [])
-                    
-                    
                     if response.response?.statusCode == 200{
                         completionHandler(.success(json))
                     }else{
@@ -104,5 +97,30 @@ final class Api {
         }
     }
     
+    func Local_user(tkn:Token, completionHandler: @escaping Handler){
+        
+        AF.request(url_queseria,parameters: tkn).response{ response in
+            debugPrint(response)
+            
+            switch response.result{
+            case .success(let data):
+                do {
+                    let json = try JSONDecoder().decode(Locales.self, from: data!)
+
+                    if response.response?.statusCode == 200{
+                        
+                        
+                        completionHandler(.success(json))
+                    }else{
+                        completionHandler(.failure(.custom(message: "checa tu conexion a internet")))}
+                    
+                }catch {
+                    completionHandler(.failure(.custom(message: "intenta de nuevo")))
+                }
+            case .failure(let err):
+                print(err.localizedDescription)
+            }
+        }
+    }
 }
 

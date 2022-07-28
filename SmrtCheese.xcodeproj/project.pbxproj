@@ -13,6 +13,9 @@
 		0B9E41E2288A0E1C00BDD87B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0B9E41E1288A0E1C00BDD87B /* Alamofire */; };
 		0B9E41EF288A296A00BDD87B /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9E41EE288A296A00BDD87B /* Api.swift */; };
 		0B9E41F3288A2B2000BDD87B /* RegisterUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9E41F2288A2B2000BDD87B /* RegisterUser.swift */; };
+		0BB2FD11289213CF009BC49D /* LocalCeldaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB2FD0F289213CE009BC49D /* LocalCeldaTableViewCell.swift */; };
+		0BB2FD12289213CF009BC49D /* LocalCeldaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BB2FD10289213CF009BC49D /* LocalCeldaTableViewCell.xib */; };
+		0BB2FD1428921DE6009BC49D /* LocalUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB2FD1328921DE6009BC49D /* LocalUser.swift */; };
 		0BBA5DE8288EF05900FDB71F /* LoginUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBA5DE7288EF05900FDB71F /* LoginUser.swift */; };
 		0BBA5DEA288F2E5D00FDB71F /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBA5DE9288F2E5C00FDB71F /* HomeTabBarController.swift */; };
 		628EBCD6287A4CA4008EB003 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628EBCD5287A4CA4008EB003 /* AppDelegate.swift */; };
@@ -49,6 +52,9 @@
 		0B05A239288FC2E500EE9EEE /* ProfileUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUser.swift; sourceTree = "<group>"; };
 		0B9E41EE288A296A00BDD87B /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		0B9E41F2288A2B2000BDD87B /* RegisterUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUser.swift; sourceTree = "<group>"; };
+		0BB2FD0F289213CE009BC49D /* LocalCeldaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCeldaTableViewCell.swift; sourceTree = "<group>"; };
+		0BB2FD10289213CF009BC49D /* LocalCeldaTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocalCeldaTableViewCell.xib; sourceTree = "<group>"; };
+		0BB2FD1328921DE6009BC49D /* LocalUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalUser.swift; sourceTree = "<group>"; };
 		0BBA5DE7288EF05900FDB71F /* LoginUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUser.swift; sourceTree = "<group>"; };
 		0BBA5DE9288F2E5C00FDB71F /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
 		628EBCD2287A4CA4008EB003 /* SmrtCheese.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmrtCheese.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,6 +112,7 @@
 				0B9E41F2288A2B2000BDD87B /* RegisterUser.swift */,
 				0BBA5DE7288EF05900FDB71F /* LoginUser.swift */,
 				0B05A239288FC2E500EE9EEE /* ProfileUser.swift */,
+				0BB2FD1328921DE6009BC49D /* LocalUser.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -145,6 +152,8 @@
 				0BBA5DE9288F2E5C00FDB71F /* HomeTabBarController.swift */,
 				0B05A235288F5C5600EE9EEE /* LocalesViewController.swift */,
 				0B05A237288F7C0200EE9EEE /* PerfilViewController.swift */,
+				0BB2FD0F289213CE009BC49D /* LocalCeldaTableViewCell.swift */,
+				0BB2FD10289213CF009BC49D /* LocalCeldaTableViewCell.xib */,
 			);
 			path = SmrtCheese;
 			sourceTree = "<group>";
@@ -279,6 +288,7 @@
 				628EBCE2287A4CA5008EB003 /* LaunchScreen.storyboard in Resources */,
 				628EBCDF287A4CA5008EB003 /* Assets.xcassets in Resources */,
 				628EBCDD287A4CA4008EB003 /* Main.storyboard in Resources */,
+				0BB2FD12289213CF009BC49D /* LocalCeldaTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,8 +314,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B05A236288F5C5600EE9EEE /* LocalesViewController.swift in Sources */,
+				0BB2FD11289213CF009BC49D /* LocalCeldaTableViewCell.swift in Sources */,
 				0BBA5DE8288EF05900FDB71F /* LoginUser.swift in Sources */,
 				628EBCDA287A4CA4008EB003 /* LoginRegisterViewController.swift in Sources */,
+				0BB2FD1428921DE6009BC49D /* LocalUser.swift in Sources */,
 				0B05A238288F7C0300EE9EEE /* PerfilViewController.swift in Sources */,
 				0B05A23A288FC2E500EE9EEE /* ProfileUser.swift in Sources */,
 				0BBA5DEA288F2E5D00FDB71F /* HomeTabBarController.swift in Sources */,
