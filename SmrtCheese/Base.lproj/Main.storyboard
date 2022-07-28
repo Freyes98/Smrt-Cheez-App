@@ -259,7 +259,9 @@
                             <constraint firstItem="esM-o6-HRK" firstAttribute="trailing" secondItem="rLn-Zj-Hja" secondAttribute="trailing" constant="20" id="xj0-rB-aCw"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="hYu-eA-ozn"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="person.fill" catalog="system" id="hYu-eA-ozn">
+                        <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="myemail" destination="IDo-Jm-luy" id="gi4-vh-S45"/>
                         <outlet property="mylastname" destination="vTc-EL-Rfg" id="aSL-mG-y0j"/>
@@ -277,7 +279,8 @@
                     <tabBar key="tabBar" opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ad3-Mr-RyX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <tabBarAppearance key="scrollEdgeAppearance"/>
+                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                        <color key="selectedImageTintColor" systemColor="labelColor"/>
                     </tabBar>
                     <connections>
                         <segue destination="2PQ-kw-xIq" kind="relationship" relationship="viewControllers" id="ytE-0z-iuw"/>
@@ -318,12 +321,21 @@
                                 <rect key="frame" x="0.0" y="341" width="414" height="472"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="celdaLocal" id="cfz-Bz-OUg">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="4" indentationWidth="0.0" reuseIdentifier="celdaLocal" textLabel="EDB-vI-Qvg" style="IBUITableViewCellStyleDefault" id="cfz-Bz-OUg">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cfz-Bz-OUg" id="fsE-EX-2nJ">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EDB-vI-Qvg">
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -347,7 +359,9 @@
                             <constraint firstItem="g6N-fH-eDR" firstAttribute="top" secondItem="wEA-7p-9hR" secondAttribute="bottom" id="ty4-pN-ROH"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="LYR-pS-So1"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="house.fill" catalog="system" id="LYR-pS-So1">
+                        <color key="badgeColor" systemColor="labelColor"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" id="AfD-rL-9Aw"/>
                     <connections>
                         <outlet property="TablaLocales" destination="g6N-fH-eDR" id="A5H-1l-1Gj"/>
@@ -360,6 +374,8 @@
     </scenes>
     <resources>
         <image name="Imagenlogo" width="89.333335876464844" height="88.333335876464844"/>
+        <image name="house.fill" catalog="system" width="128" height="106"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="tienda-1" width="512" height="512"/>
         <image name="usuario" width="512" height="512"/>
         <systemColor name="labelColor">
