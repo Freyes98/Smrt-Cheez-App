@@ -9,15 +9,18 @@ import Foundation
 import Alamofire
 import UIKit
 
+var url_base = "http://18.144.45.33:3333/api/v1/"
+
 final class Api {
- 
+    
     static let shared = Api()
 
     //rutas
-    let url_register = "http://127.0.0.1:3333/api/v1/users/register"
-    let url_login = "http://127.0.0.1:3333/api/v1/users/login"
-    let url_profile = "http://127.0.0.1:3333/api/v1/users/user"
-    let url_queseria = "http://127.0.0.1:3333/api/v1/queseria/index"
+    
+    var url_register = "\(url_base)users/register"
+    var url_login = "\(url_base)users/login"
+    var url_profile = "\(url_base)users/user"
+    var url_queseria = "\(url_base)queseria/index"
     
 
 
