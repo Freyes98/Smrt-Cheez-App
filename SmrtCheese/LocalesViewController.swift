@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Network
 class LocalesViewController: UIViewController {
     @IBOutlet weak var TablaLocales: UITableView!
         
@@ -41,6 +41,7 @@ class LocalesViewController: UIViewController {
     
 }
 
+
 extension LocalesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Locales.count
@@ -55,5 +56,38 @@ extension LocalesViewController: UITableViewDelegate, UITableViewDataSource {
         return celda
     }
     
-     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let monitor = NWPathMonitor()
+               monitor.pathUpdateHandler = { path in
+                   if path.status != .satisfied {
+                       // Not connected
+                       DispatchQueue.main.async{
+                           let alert = UIAlertController(title: "Error", message: "Comprueba tu conexion a internet", preferredStyle: UIAlertController.Style.alert)
+
+                                   // add an action (button)
+                                   alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+
+                                   // show the alert
+                           self.present(alert, animated: true, completion: nil)
+                       }
+                      
+                   }
+                   else if path.usesInterfaceType(.cellular) {
+                       print("celular")
+                       // Cellular 3/4/5g connection
+                   }
+                   else if path.usesInterfaceType(.wifi) {
+                       print("wifi")
+                       // Wi-Fi connection
+                   }
+                   else if path.usesInterfaceType(.wiredEthernet) {
+                       // Ethernet connection
+                       print("ethernet")
+                   }
+               }
+
+               monitor.start(queue: DispatchQueue.global(qos: .background))
+    }
 }

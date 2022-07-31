@@ -8,6 +8,7 @@
 import UIKit
 import Alamofire
 import SwiftUI
+import Network
 
 class LoginRegisterViewController: UIViewController {
     @IBOutlet weak var MySegmentedControl: UISegmentedControl!
@@ -24,9 +25,10 @@ class LoginRegisterViewController: UIViewController {
     
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+
         
         //textfields
         Mymaillogin.isHidden = false
@@ -43,19 +45,68 @@ class LoginRegisterViewController: UIViewController {
         Myregistrerbutton.isHidden = true
         ImageLogo.isHidden = false
         
-        
         //comprobacion de autentificacion
-        
+    
         let datos = UserDefaults.standard
-        if let token = datos.value(forKey: "token") as? String{
+        if datos.value(forKey: "token") is String{
             
-            let homeTabBarController = self.storyboard?.instantiateViewController(withIdentifier: "HomeTabBarController") as! HomeTabBarController
+            //let homeTabBarController = self.storyboard?.instantiateViewController(withIdentifier: "HomeTabBarController") as! HomeTabBarController
             
-            self.present(homeTabBarController,animated: false,completion: nil)
+            //self.present(homeTabBarController,animated: false,completion: nil)
             
         }
         
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let monitor = NWPathMonitor()
+               monitor.pathUpdateHandler = { path in
+                   if path.status != .satisfied {
+                       // Not connected
+                       DispatchQueue.main.async{
+                           let alert = UIAlertController(title: "Error", message: "Comprueba tu conexion a internet", preferredStyle: UIAlertController.Style.alert)
+
+                                   // add an action (button)
+                                   alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+
+                                   // show the alert
+                           self.present(alert, animated: true, completion: nil)
+                       }
+                      
+                   }
+                   else if path.usesInterfaceType(.cellular) {
+                       print("celular")
+                       // Cellular 3/4/5g connection
+                   }
+                   else if path.usesInterfaceType(.wifi) {
+                       print("wifi")
+                       // Wi-Fi connection
+                   }
+                   else if path.usesInterfaceType(.wiredEthernet) {
+                       // Ethernet connection
+                       print("ethernet")
+                   }
+               }
+
+               monitor.start(queue: DispatchQueue.global(qos: .background))
+    }
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //Buttom actions
+    
 
     @IBAction func IniciarSesion(_ sender: Any) {
         
@@ -69,8 +120,6 @@ class LoginRegisterViewController: UIViewController {
             switch result {
             case .success(let json):
                 let tkn = (json as! Response).token.token
-                //let jsonResponse = (json as AnyObject).value(forKey: "token")
-                //let token = (jsontoken as AnyObject).value(forKey: "token") as! String
                 
                 //Guardado de datos
                 let datos = UserDefaults.standard
@@ -87,10 +136,8 @@ class LoginRegisterViewController: UIViewController {
                 let homeTabBarController = self.storyboard?.instantiateViewController(withIdentifier: "HomeTabBarController") as! HomeTabBarController
                 
                 self.present(homeTabBarController,animated: true,completion: nil)
-                
-                //let test = JSONResponse(token: jsonResponse)
-                //print(test.token)
-            case .failure(let err):
+
+            case .failure(_):
                 let alert = UIAlertController(title: "Error", message: "Usuario no encontrado", preferredStyle: UIAlertController.Style.alert)
 
                         // add an action (button)
@@ -130,6 +177,16 @@ class LoginRegisterViewController: UIViewController {
         }
         
     }
+    func alert(tittle:String,message:String){
+        let alert = UIAlertController(title: tittle, message: message, preferredStyle: UIAlertController.Style.alert)
+
+                // add an action (button)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+
+                // show the alert
+                present(alert, animated: true, completion: nil)
+        
+    }
     
     @IBAction func mysementedaction(_ sender: Any) {
         if MySegmentedControl.selectedSegmentIndex == 1
@@ -160,5 +217,6 @@ class LoginRegisterViewController: UIViewController {
     }
     
 }
+
 
 

@@ -13,6 +13,7 @@
 		0B9E41E2288A0E1C00BDD87B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0B9E41E1288A0E1C00BDD87B /* Alamofire */; };
 		0B9E41EF288A296A00BDD87B /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9E41EE288A296A00BDD87B /* Api.swift */; };
 		0B9E41F3288A2B2000BDD87B /* RegisterUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9E41F2288A2B2000BDD87B /* RegisterUser.swift */; };
+		0BAD93692895E1130025A56B /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 0BAD93682895E1130025A56B /* Reachability */; };
 		0BB2FD11289213CF009BC49D /* LocalCeldaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB2FD0F289213CE009BC49D /* LocalCeldaTableViewCell.swift */; };
 		0BB2FD12289213CF009BC49D /* LocalCeldaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BB2FD10289213CF009BC49D /* LocalCeldaTableViewCell.xib */; };
 		0BB2FD1428921DE6009BC49D /* LocalUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB2FD1328921DE6009BC49D /* LocalUser.swift */; };
@@ -78,6 +79,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B9E41E2288A0E1C00BDD87B /* Alamofire in Frameworks */,
+				0BAD93692895E1130025A56B /* Reachability in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,6 +195,7 @@
 			name = SmrtCheese;
 			packageProductDependencies = (
 				0B9E41E1288A0E1C00BDD87B /* Alamofire */,
+				0BAD93682895E1130025A56B /* Reachability */,
 			);
 			productName = SmrtCheese;
 			productReference = 628EBCD2287A4CA4008EB003 /* SmrtCheese.app */;
@@ -268,6 +271,7 @@
 			mainGroup = 628EBCC9287A4CA3008EB003;
 			packageReferences = (
 				0B9E41E0288A0E1C00BDD87B /* XCRemoteSwiftPackageReference "Alamofire" */,
+				0BAD93672895E1130025A56B /* XCRemoteSwiftPackageReference "Reachability" */,
 			);
 			productRefGroup = 628EBCD3287A4CA4008EB003 /* Products */;
 			projectDirPath = "";
@@ -676,6 +680,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		0BAD93672895E1130025A56B /* XCRemoteSwiftPackageReference "Reachability" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ashleymills/Reachability.swift";
+			requirement = {
+				kind = exactVersion;
+				version = 5.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -683,6 +695,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0B9E41E0288A0E1C00BDD87B /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		0BAD93682895E1130025A56B /* Reachability */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0BAD93672895E1130025A56B /* XCRemoteSwiftPackageReference "Reachability" */;
+			productName = Reachability;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
