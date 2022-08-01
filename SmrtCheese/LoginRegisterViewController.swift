@@ -175,18 +175,13 @@ class LoginRegisterViewController: UIViewController {
                         // show the alert
                         self.present(alert, animated: true, completion: nil)}
         }
+        Mymailregistrer.text=""
+        mypasswordregistrer.text=""
+        Mynameregistrer.text=""
+        Mylastnameregistrer.text=""
         
     }
-    func alert(tittle:String,message:String){
-        let alert = UIAlertController(title: tittle, message: message, preferredStyle: UIAlertController.Style.alert)
 
-                // add an action (button)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-
-                // show the alert
-                present(alert, animated: true, completion: nil)
-        
-    }
     
     @IBAction func mysementedaction(_ sender: Any) {
         if MySegmentedControl.selectedSegmentIndex == 1
