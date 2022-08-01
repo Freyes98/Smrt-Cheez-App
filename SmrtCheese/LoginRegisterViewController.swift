@@ -163,9 +163,39 @@ class LoginRegisterViewController: UIViewController {
 
                     // add an action (button)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-
+                
                     // show the alert
-                    self.present(alert, animated: true, completion: nil)}
+                    self.present(alert, animated: true, completion: nil)
+                self.MySegmentedControl.selectedSegmentIndex = 0
+                if self.MySegmentedControl.selectedSegmentIndex == 0
+                {
+                    self.Mymaillogin.isHidden = false
+                    self.Mypasswordlogin.isHidden = false
+                    self.Mynameregistrer.isHidden = true
+                    self.Mynameregistrer.isHidden = true
+                    self.Mymailregistrer.isHidden = true
+                    self.Mylastnameregistrer.isHidden = true
+                    self.mypasswordregistrer.isHidden = true
+                    self.forgotpassword.isHidden = false
+                    self.Login.isHidden = false
+                    self.Myregistrerbutton.isHidden = true
+                }
+                else{
+                   
+                    
+                    self.Mymaillogin.isHidden = true
+                    self.Mypasswordlogin.isHidden = true
+                    self.Mynameregistrer.isHidden = false
+                    self.Mynameregistrer.isHidden = false
+                    self.Mymailregistrer.isHidden = false
+                    self.mypasswordregistrer.isHidden = false
+                    self.Mylastnameregistrer.isHidden = false
+                    self.forgotpassword.isHidden = true
+                    self.Login.isHidden = true
+                    self.Myregistrerbutton.isHidden = false
+                }
+            }
+            
             else {
                 let alert = UIAlertController(title: "Registro", message: "El usuario ya existe", preferredStyle: UIAlertController.Style.alert)
 
@@ -179,6 +209,7 @@ class LoginRegisterViewController: UIViewController {
         mypasswordregistrer.text=""
         Mynameregistrer.text=""
         Mylastnameregistrer.text=""
+        
         
     }
 
