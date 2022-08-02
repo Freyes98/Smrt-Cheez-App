@@ -91,4 +91,15 @@ class PerfilViewController: UIViewController {
                monitor.start(queue: DispatchQueue.global(qos: .background))
     }
 
+    @IBAction func CerrarSesion(_ sender: Any) {
+        
+        let datos = UserDefaults.standard
+        datos.removeObject(forKey: "token")
+        datos.synchronize()
+        let LoginRegisterViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginRegisterViewController") as! LoginRegisterViewController
+        self.dismiss(animated: true, completion: nil)
+        self.present(LoginRegisterViewController,animated: true,completion: nil)
+        
+        
+    }
 }

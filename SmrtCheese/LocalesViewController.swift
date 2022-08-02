@@ -11,6 +11,7 @@ class LocalesViewController: UIViewController {
     @IBOutlet weak var TablaLocales: UITableView!
         
     var Locales : [Queseria] = []
+    var enviar_id : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +55,20 @@ extension LocalesViewController: UITableViewDelegate, UITableViewDataSource {
         
         
         return celda
+    }
+    //Metodos para enviar id y navegar a otra pantalla
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+         enviar_id = Locales[indexPath.row].id
+        performSegue(withIdentifier: "enviar_id", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "enviar_id" {
+            let secciones = segue.destination as! SeccionesViewController
+            secciones.recibir_id = enviar_id
+            
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

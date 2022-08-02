@@ -9,7 +9,8 @@ import Foundation
 import Alamofire
 import UIKit
 
-var url_base = "http://18.144.45.33:3333/api/v1/"
+let url_base = "http://18.144.45.33:3333/api/v1/"
+
 
 final class Api {
     
@@ -21,6 +22,7 @@ final class Api {
     var url_login = "\(url_base)users/login"
     var url_profile = "\(url_base)users/user"
     var url_queseria = "\(url_base)queseria/index"
+    
     
 
 
@@ -51,6 +53,8 @@ final class Api {
     
     func Login_user(usuario: LoginUser, completionHandler: @escaping Handler){
         let headers: HTTPHeaders = [.contentType("application/json")]
+        
+        
         
         AF.request(url_login,method:.post,parameters:usuario,encoder:JSONParameterEncoder.default, headers: headers).response{ response in
             debugPrint(response)
@@ -125,5 +129,37 @@ final class Api {
             }
         }
     }
+    
+    func Seccion_user(tkn:Token,id_queseria:String, completionHandler: @escaping Handler){
+        
+        //let hdrs: HTTPHeaders = [.contentType("application/x-www-form-urlencoded")]
+        
+        //let id = "62e829199136b462bf93b723"
+        let url_apartados = "\(url_base)apartados/\(id_queseria)/get"
+
+        AF.request(url_apartados,parameters: tkn).response{ response in
+            debugPrint(response)
+            
+            switch response.result{
+            case .success(let data):
+                do {
+                    let json = try JSONDecoder().decode(Secciones.self, from: data!)
+
+                    if response.response?.statusCode == 200{
+                        
+                        
+                        completionHandler(.success(json))
+                    }else{
+                        completionHandler(.failure(.custom(message: "checa tu conexion a internet")))}
+                    
+                }catch {
+                    completionHandler(.failure(.custom(message: "intenta de nuevo")))
+                }
+            case .failure(let err):
+                print(err.localizedDescription)
+            }
+        }
+    }
+    
 }
 

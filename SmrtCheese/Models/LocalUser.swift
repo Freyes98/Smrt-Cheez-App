@@ -8,9 +8,9 @@
 import Foundation
 
 struct Queseria: Codable {
-    let id, nombreQueseria, telefono: String
+    let id, nombreQueseria, telefono: String?
     let direccion: String?
-    let horarios, descripcion, userID, createdAt: String
+    let horarios, descripcion, userID, createdAt: String?
     let updatedAt: String
 
     enum CodingKeys: String, CodingKey {
