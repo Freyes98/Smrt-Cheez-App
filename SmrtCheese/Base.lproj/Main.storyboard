@@ -387,6 +387,9 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Añadir local">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="35"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <segue destination="1LB-d8-hLy" kind="show" id="Vm7-Gt-e8C"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lZ0-zR-Ghh"/>
@@ -420,16 +423,16 @@
             </objects>
             <point key="canvasLocation" x="2580.46875" y="-200.29282576866763"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Local View Controller-->
         <scene sceneID="NB6-MG-0yw">
             <objects>
-                <viewController id="1LB-d8-hLy" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="fz9-Sj-BET">
+                <viewController id="1LB-d8-hLy" customClass="AddLocalViewController" customModule="SmrtCheese" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fz9-Sj-BET" customClass="An_adir">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Añadir Local" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSb-Lo-evl">
-                                <rect key="frame" x="20" y="40" width="984" height="80"/>
+                                <rect key="frame" x="20" y="90" width="984" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="PcQ-Lu-EHJ"/>
                                 </constraints>
@@ -438,7 +441,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="nombre del local" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="la5-f6-RL0">
-                                <rect key="frame" x="20" y="160" width="984" height="60"/>
+                                <rect key="frame" x="20" y="210" width="984" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="LT8-S9-E0t"/>
                                 </constraints>
@@ -446,7 +449,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="telefono" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ohy-M0-Hdf">
-                                <rect key="frame" x="20" y="260" width="984" height="60"/>
+                                <rect key="frame" x="20" y="310" width="984" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="dqI-5l-o6f"/>
                                 </constraints>
@@ -454,7 +457,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="direcciòn" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k3y-uy-9Zr">
-                                <rect key="frame" x="20" y="360" width="984" height="60"/>
+                                <rect key="frame" x="20" y="410" width="984" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="2w5-90-M2Q"/>
                                 </constraints>
@@ -462,7 +465,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="horario" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PM1-zj-6Gu">
-                                <rect key="frame" x="20" y="460" width="984" height="60"/>
+                                <rect key="frame" x="20" y="510" width="984" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="vEk-6i-B4c"/>
                                 </constraints>
@@ -470,7 +473,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="descripciòn" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="927-Yp-EHi">
-                                <rect key="frame" x="20" y="560" width="984" height="60"/>
+                                <rect key="frame" x="20" y="610" width="984" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="aah-TS-wyL"/>
                                 </constraints>
@@ -478,7 +481,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o8d-At-cKn">
-                                <rect key="frame" x="20" y="660" width="984" height="60"/>
+                                <rect key="frame" x="20" y="710" width="984" height="60"/>
                                 <color key="backgroundColor" red="1" green="0.94833026529999997" blue="0.33640198389999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="rsQ-Gi-MYU"/>
@@ -488,6 +491,9 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Añadir">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="Add_action:" destination="1LB-d8-hLy" eventType="touchUpInside" id="o4t-2y-9ah"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dOO-ID-7Gr"/>
@@ -516,6 +522,15 @@
                             <constraint firstItem="k3y-uy-9Zr" firstAttribute="leading" secondItem="dOO-ID-7Gr" secondAttribute="leading" constant="20" id="zIg-82-AqA"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="suC-rk-naw"/>
+                    <connections>
+                        <outlet property="Btn_Añadir" destination="o8d-At-cKn" id="Li3-Ok-pRo"/>
+                        <outlet property="descripcion_local" destination="927-Yp-EHi" id="S3w-s2-cht"/>
+                        <outlet property="direccion_local" destination="k3y-uy-9Zr" id="bv9-bj-jKd"/>
+                        <outlet property="horario_local" destination="PM1-zj-6Gu" id="Jxg-CE-uYb"/>
+                        <outlet property="name_local" destination="la5-f6-RL0" id="6cf-M4-Lwm"/>
+                        <outlet property="telefono_local" destination="ohy-M0-Hdf" id="rd9-Pg-3Wz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KhR-B2-Xrd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -581,6 +596,10 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Añadir Seccion">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="35"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="AddSection:" destination="RRa-Jo-LN0" eventType="touchUpInside" id="fFm-vi-R0q"/>
+                                    <segue destination="elS-vM-MAI" kind="show" id="Vxr-rH-erk"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qae-ju-dFY"/>
@@ -614,16 +633,16 @@
             </objects>
             <point key="canvasLocation" x="3663.8671874999995" y="-200.29282576866763"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Seccion View Controller-->
         <scene sceneID="aYa-S1-yqQ">
             <objects>
-                <viewController id="elS-vM-MAI" sceneMemberID="viewController">
+                <viewController id="elS-vM-MAI" customClass="AddSeccionViewController" customModule="SmrtCheese" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3jb-0d-jP1">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="nombre de seccion" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EcF-NZ-i9S">
-                                <rect key="frame" x="20" y="128" width="984" height="60"/>
+                                <rect key="frame" x="20" y="178" width="984" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="xLM-Lw-i0J"/>
                                 </constraints>
@@ -631,7 +650,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="descripciòn" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lEB-YR-OCI">
-                                <rect key="frame" x="20" y="228" width="984" height="60"/>
+                                <rect key="frame" x="20" y="278" width="984" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="5H0-N5-7Jv"/>
                                 </constraints>
@@ -639,7 +658,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v1C-bL-QRS">
-                                <rect key="frame" x="20" y="328" width="984" height="60"/>
+                                <rect key="frame" x="20" y="378" width="984" height="60"/>
                                 <color key="backgroundColor" red="1" green="0.94833026529999997" blue="0.33640198389999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="avO-ui-aTQ"/>
@@ -649,9 +668,12 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Añadir">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="AddSection:" destination="elS-vM-MAI" eventType="touchUpInside" id="QGa-02-iBA"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Añadir secciones" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1iX-4Q-Vgc">
-                                <rect key="frame" x="20" y="40" width="984" height="48"/>
+                                <rect key="frame" x="20" y="90" width="984" height="48"/>
                                 <color key="tintColor" systemColor="systemOrangeColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <color key="textColor" systemColor="systemOrangeColor"/>
@@ -675,6 +697,11 @@
                             <constraint firstItem="lEB-YR-OCI" firstAttribute="leading" secondItem="Z7U-uv-ao3" secondAttribute="leading" constant="20" id="zuw-xh-Ubz"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="xlA-mH-Hly"/>
+                    <connections>
+                        <outlet property="descripcion_seccion" destination="lEB-YR-OCI" id="xl6-rE-uLt"/>
+                        <outlet property="nombre_seccion" destination="EcF-NZ-i9S" id="BOp-dD-cqM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8o1-lf-OgD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

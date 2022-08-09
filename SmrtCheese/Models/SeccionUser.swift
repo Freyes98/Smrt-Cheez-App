@@ -7,6 +7,13 @@
 
 import Foundation
 
+struct SeccionEnc: Encodable {
+    
+    let nombre_apartado: String?
+    let descripcion: String?
+    let token: String?
+}
+
 
 struct Seccion: Codable {
     let id, nombreApartado: String

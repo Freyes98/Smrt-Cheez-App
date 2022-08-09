@@ -41,6 +41,10 @@ class SeccionesViewController: UIViewController {
         }
         // Do any additional setup after loading the view.
     }
+    @IBAction func AddSection(_ sender: Any) {
+        
+        
+    }
     
 
 }

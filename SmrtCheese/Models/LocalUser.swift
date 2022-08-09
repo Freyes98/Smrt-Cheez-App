@@ -6,6 +6,15 @@
 //
 
 import Foundation
+struct Local: Encodable {
+    
+    let nombre_queseria: String?
+    let telefono: String?
+    let direccion: String?
+    let horarios: String?
+    let descripcion: String?
+    let token: String?
+}
 
 struct Queseria: Codable {
     let id, nombreQueseria, telefono: String?
