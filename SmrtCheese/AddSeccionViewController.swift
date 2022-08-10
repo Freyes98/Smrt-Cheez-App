@@ -11,16 +11,18 @@ class AddSeccionViewController: UIViewController {
 
     @IBOutlet weak var nombre_seccion: UITextField!
     @IBOutlet weak var descripcion_seccion: UITextField!
+    var recibir_id_queseria: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
     }
     
    
     @IBAction func AddSection(_ sender: Any) {
         
-        let id = "222222"
         let datos = UserDefaults.standard
         let tkn = datos.value(forKey: "token") as? String
         
@@ -29,7 +31,7 @@ class AddSeccionViewController: UIViewController {
         }
         let seccion = SeccionEnc(nombre_apartado: nombre, descripcion: descripcion, token: tkn)
         
-        Api.shared.Add_Seccion(Seccion: seccion,id_quseria: id){(isSucess) in
+        Api.shared.Add_Seccion(Seccion: seccion,id_quseria: recibir_id_queseria ?? ""){(isSucess) in
             if isSucess {
             let alert = UIAlertController(title: "Registro", message: "Seccion registrado correctamente", preferredStyle: UIAlertController.Style.alert)
 

@@ -41,13 +41,24 @@ class SeccionesViewController: UIViewController {
         }
         // Do any additional setup after loading the view.
     }
-    @IBAction func AddSection(_ sender: Any) {
-        
-        
-    }
+  
     
 
+    @IBAction func Addlocal(_ sender: Any) {
+        performSegue(withIdentifier: "enviar_id", sender: self)
+
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "enviar_id"{
+            let destino = segue.destination as! AddSeccionViewController
+            destino.recibir_id_queseria = recibir_id
+        }
+    }
 }
+
+
+
+
 extension SeccionesViewController: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Apartados.count

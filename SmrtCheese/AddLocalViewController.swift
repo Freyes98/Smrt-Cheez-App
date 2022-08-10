@@ -14,7 +14,7 @@ class AddLocalViewController: UIViewController {
     @IBOutlet weak var telefono_local: UITextField!
     @IBOutlet weak var name_local: UITextField!
     @IBOutlet weak var Btn_Añadir: UIButton!
-    
+    var recibir_id : String?
    
     override func viewDidLoad() {
         super.viewDidLoad()
