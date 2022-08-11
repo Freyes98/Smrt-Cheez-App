@@ -1,25 +1,23 @@
 //
-//  SeccionesViewController.swift
+//  SensoresViewController.swift
 //  SmrtCheese
 //
-//  Created by Francisco on 02/08/22.
+//  Created by Francisco on 11/08/22.
 //
 
 import UIKit
 
-class SeccionesViewController: UIViewController {
-    
-    @IBOutlet weak var TablaSecciones: UITableView!
-    
-    var Apartados : [Seccion] = []
+class SensoresViewController: UIViewController {
+
+    var sensors : [Sensor] = []
     var recibir_id : String?
     var enviar_id : String?
-    var seccion: Seccion?
+    var sensor: Sensor?
     
     lazy var refreshControl:UIRefreshControl = {
         
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(SeccionesViewController.actualizarDatos(_:)), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(SensoresViewController.actualizarDatos(_:)), for: .valueChanged)
         //color de rueda
         refreshControl.tintColor = UIColor.black
         
@@ -34,103 +32,101 @@ class SeccionesViewController: UIViewController {
             
         let tkn = Token(type: nil, token: token)
         
-        Api.shared.Seccion_user(tkn: tkn,id_queseria:recibir_id ?? ""){ [self](result) in
+        Api.shared.Sensor_user(tkn: tkn,id_sensor: recibir_id ?? ""){ [self](result) in
             switch result {
             case .success(let json):
-                let countt = (json as! Secciones).count
-                Apartados = json as! [Seccion]
+                let countt = (json as! Sensores).count
+                sensors = json as! [Sensor]
                 print(countt)
             case .failure(let err):
                 print(err.localizedDescription)
  }
-        
-            self.TablaSecciones.register(UINib(nibName: "SeccionCeldaTableViewCell", bundle: nil), forCellReuseIdentifier: "celdaSeccion")
-    
-            self.TablaSecciones.delegate = self
-            self.TablaSecciones.dataSource = self
+            self.TablaSensores.register(UINib(nibName: "SensorCeldaTableViewCell", bundle: nil), forCellReuseIdentifier: "celdaSensor")
+            
+            self.TablaSensores.delegate = self
+            self.TablaSensores.dataSource = self
         
 
         }
-            self.TablaSecciones.reloadData()
+            self.TablaSensores.reloadData()
             refreshControl.endRefreshing()
 
         }
     
     
+    @IBOutlet weak var labelselecion: UILabel!
+    //var enviar_id : String?
+    
+    @IBOutlet weak var TablaSensores: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let datos = UserDefaults.standard
         let token = datos.value(forKey: "token") as? String
             
         let tkn = Token(type: nil, token: token)
-
-        Api.shared.Seccion_user(tkn: tkn,id_queseria:recibir_id ?? ""){ [self](result) in
+        
+        Api.shared.Sensor_user(tkn: tkn,id_sensor: recibir_id ?? ""){ [self](result) in
             switch result {
             case .success(let json):
-                let countt = (json as! Secciones).count
-                Apartados = json as! [Seccion]
+                let countt = (json as! Sensores).count
+                sensors = json as! [Sensor]
                 print(countt)
             case .failure(let err):
                 print(err.localizedDescription)
- }
-        
-            self.TablaSecciones.register(UINib(nibName: "SeccionCeldaTableViewCell", bundle: nil), forCellReuseIdentifier: "celdaSeccion")
-    
-            self.TablaSecciones.delegate = self
-            self.TablaSecciones.dataSource = self
-            
-            self.TablaSecciones.addSubview(refreshControl)
-        
-
         }
-        // Do any additional setup after loading the view.
-    }
-  
-    
-    //FUNCION PARA ENVIAR ID DEL LOCAL A LA SECCION
-    @IBAction func Addlocal(_ sender: Any) {
-        performSegue(withIdentifier: "enviar_id", sender: self)
+            self.TablaSensores.register(UINib(nibName: "SensorCeldaTableViewCell", bundle: nil), forCellReuseIdentifier: "celdaSensor")
 
+            self.TablaSensores.delegate = self
+            self.TablaSensores.dataSource = self
+        }
+        
+        
+        
+        labelselecion.text = recibir_id
+        self.TablaSensores.addSubview(refreshControl)
+        
+        
+
+        // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        self.TablaSecciones.reloadData()
+        self.TablaSensores.reloadData()
     }
-    
+    //paraenviar parametros
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "enviar_id"{
-            let destino = segue.destination as! AddSeccionViewController
-            destino.recibir_id_queseria = recibir_id
+            let destino = segue.destination as! AddSensorViewController
+            destino.id_seccion = recibir_id
         }
         if segue.identifier == "enviar_update"{
-            let update_seccion = segue.destination as! UpdateSeccionViewController
-            update_seccion.seccion = seccion
+            let update_sensor = segue.destination as! UpdateSensorViewController
+            update_sensor.sensor = sensor
         }
-        if segue.identifier == "enviar_id_sensor"{
-            let sensor = segue.destination as! SensoresViewController
-            sensor.recibir_id = enviar_id
-            
-        }
+        //este sera para enviar id del sensor seleccionado a la pantalla sensor
+        
+        //if segue.identifier == "enviar_id_sensor"{
+        //    let sensor = segue.destination as! SensoresViewController
+        //    sensor.recibir_id = enviar_id
+        
+        //}
     }
+    
+  
+
 }
-
-
-
-
-extension SeccionesViewController: UITableViewDelegate,UITableViewDataSource{
+extension SensoresViewController:UITableViewDelegate,UITableViewDataSource{
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Apartados.count
+        return sensors.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let celda = TablaSecciones.dequeueReusableCell(withIdentifier: "celdaSeccion", for: indexPath) as! SeccionCeldaTableViewCell
-        celda.myApartadoname.text = Apartados[indexPath.row].nombreApartado
-        celda.myDescription.text = Apartados[indexPath.row].descripcion
-        //celda.myApartadoname.text = "Juann"
-        //celda.myDescription.text = "juan"
+        let celda = TablaSensores.dequeueReusableCell(withIdentifier: "celdaSensor", for: indexPath) as! SensorCeldaTableViewCell
+        celda.name_sensor.text = sensors[indexPath.row].nombreSensor
+        celda.tipo_sensor.text = sensors[indexPath.row].tipo
         
         return celda
     }
@@ -143,14 +139,14 @@ extension SeccionesViewController: UITableViewDelegate,UITableViewDataSource{
       let editItem = UIContextualAction(style: .destructive, title: "Editar") {  (contextualAction, view, boolValue) in
           //Code I want to do here
           
-          self.seccion = self.Apartados[indexPath.row]
+          self.sensor = self.sensors[indexPath.row]
           self.performSegue(withIdentifier: "enviar_update", sender: self)
           
       }
         //BOTON DELETE
       let deleteItem = UIContextualAction(style: .destructive, title: "Eliminar") {  (contextualAction, view, boolValue) in
             //Code I want to do here
-          self.deleteAction(seccion: self.Apartados[indexPath.row], indexpath: indexPath)
+          self.deleteAction(sensor: self.sensors[indexPath.row], indexpath: indexPath)
       }
         
         editItem.backgroundColor = .black
@@ -158,26 +154,20 @@ extension SeccionesViewController: UITableViewDelegate,UITableViewDataSource{
 
       return swipeActions
   }
-    
-    
+    //ENVIAR PARAMETRO SELECCIONADO
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        self.enviar_id = Apartados[indexPath.row].id
-        self.performSegue(withIdentifier: "enviar_id_sensor", sender: self)
+        self.enviar_id = sensors[indexPath.row].id
+        //self.performSegue(withIdentifier: "enviar_id", sender: self)
     }
     
-    
-    
-    
-    
-    
-    
-    private func updateAction(seccion:Seccion,indexpath: IndexPath){
+    private func updateAction(sensor:Sensor,indexpath: IndexPath){
         
         
         
     }
-    private func deleteAction(seccion:Seccion,indexpath: IndexPath){
+    
+    private func deleteAction(sensor:Sensor,indexpath: IndexPath){
 
         let alert = UIAlertController(title: "Delete", message: "Estas seguro que deseas eliminar?", preferredStyle: .alert)
         let deleteAction = UIAlertAction(title: "yes", style: .default){(action) in
@@ -186,30 +176,30 @@ extension SeccionesViewController: UITableViewDelegate,UITableViewDataSource{
             let token = datos.value(forKey: "token") as? String
                 
             let tkn = Token(type: nil, token: token)
-            Api.shared.delete_Seccion(tkn: tkn,id:self.Apartados[indexpath.row].id ){ [self](result) in
+            Api.shared.delete_Sensor(tkn: tkn,id: self.sensors[indexpath.row].id ?? "" ){ [self](result) in
                 switch result {
             //
                 case .success(let json):
-                    let countt = (json as! Secciones).count
-                    Apartados = json as! [Seccion]
+                    let countt = (json as! Sensores).count
+                    sensors = json as! [Sensor]
                     print(countt)
             //
                 case .failure(let err):
                     print(err.localizedDescription)
             //
-                    self.TablaSecciones.register(UINib(nibName: "SeccionCeldaTableViewCell", bundle: nil), forCellReuseIdentifier: "celdaSeccion")
+                    self.TablaSensores.register(UINib(nibName: "SeccionCeldaTableViewCell", bundle: nil), forCellReuseIdentifier: "celdaSeccion")
             
-                    self.TablaSecciones.delegate = self
-                    self.TablaSecciones.dataSource = self
+                    self.TablaSensores.delegate = self
+                    self.TablaSensores.dataSource = self
             //
             }
-                self.TablaSecciones.reloadData()
+                self.TablaSensores.reloadData()
                 refreshControl.endRefreshing()
 
             }
             
-            self.Apartados.remove(at: indexpath.row)
-            self.TablaSecciones?.deleteRows(at: [indexpath], with: .automatic)
+            self.sensors.remove(at: indexpath.row)
+            self.TablaSensores?.deleteRows(at: [indexpath], with: .automatic)
             
         }
         
@@ -220,5 +210,9 @@ extension SeccionesViewController: UITableViewDelegate,UITableViewDataSource{
     
     }
     
+    
+    
+  
+    
 }
-
+    

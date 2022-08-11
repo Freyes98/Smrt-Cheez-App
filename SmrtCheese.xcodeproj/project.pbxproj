@@ -14,6 +14,12 @@
 		0B0F4B7728A2B7810098A3E5 /* AddSeccionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F4B7628A2B7810098A3E5 /* AddSeccionViewController.swift */; };
 		0B32747D28A4F23400C84E3F /* UpdateLocalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B32747C28A4F23300C84E3F /* UpdateLocalViewController.swift */; };
 		0B32747F28A4FFED00C84E3F /* UpdateSeccionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B32747E28A4FFED00C84E3F /* UpdateSeccionViewController.swift */; };
+		0B81BEAD28A55D9F003CAC51 /* AddSensorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B81BEAC28A55D9F003CAC51 /* AddSensorViewController.swift */; };
+		0B81BEAF28A5ABE9003CAC51 /* UpdateSensorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B81BEAE28A5ABE9003CAC51 /* UpdateSensorViewController.swift */; };
+		0B8785F628A50A7900E7821E /* SensoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8785F528A50A7900E7821E /* SensoresViewController.swift */; };
+		0B8785F828A50E4D00E7821E /* SensorUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8785F728A50E4D00E7821E /* SensorUser.swift */; };
+		0B8785FB28A50F6300E7821E /* SensorCeldaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8785F928A50F6300E7821E /* SensorCeldaTableViewCell.swift */; };
+		0B8785FC28A50F6300E7821E /* SensorCeldaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B8785FA28A50F6300E7821E /* SensorCeldaTableViewCell.xib */; };
 		0B9E41E2288A0E1C00BDD87B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0B9E41E1288A0E1C00BDD87B /* Alamofire */; };
 		0B9E41EF288A296A00BDD87B /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9E41EE288A296A00BDD87B /* Api.swift */; };
 		0B9E41F3288A2B2000BDD87B /* RegisterUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9E41F2288A2B2000BDD87B /* RegisterUser.swift */; };
@@ -62,6 +68,12 @@
 		0B0F4B7628A2B7810098A3E5 /* AddSeccionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSeccionViewController.swift; sourceTree = "<group>"; };
 		0B32747C28A4F23300C84E3F /* UpdateLocalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateLocalViewController.swift; sourceTree = "<group>"; };
 		0B32747E28A4FFED00C84E3F /* UpdateSeccionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateSeccionViewController.swift; sourceTree = "<group>"; };
+		0B81BEAC28A55D9F003CAC51 /* AddSensorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSensorViewController.swift; sourceTree = "<group>"; };
+		0B81BEAE28A5ABE9003CAC51 /* UpdateSensorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateSensorViewController.swift; sourceTree = "<group>"; };
+		0B8785F528A50A7900E7821E /* SensoresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensoresViewController.swift; sourceTree = "<group>"; };
+		0B8785F728A50E4D00E7821E /* SensorUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorUser.swift; sourceTree = "<group>"; };
+		0B8785F928A50F6300E7821E /* SensorCeldaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorCeldaTableViewCell.swift; sourceTree = "<group>"; };
+		0B8785FA28A50F6300E7821E /* SensorCeldaTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SensorCeldaTableViewCell.xib; sourceTree = "<group>"; };
 		0B9E41EE288A296A00BDD87B /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		0B9E41F2288A2B2000BDD87B /* RegisterUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUser.swift; sourceTree = "<group>"; };
 		0BB2FD0F289213CE009BC49D /* LocalCeldaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCeldaTableViewCell.swift; sourceTree = "<group>"; };
@@ -130,6 +142,7 @@
 				0B05A239288FC2E500EE9EEE /* ProfileUser.swift */,
 				0BB2FD1328921DE6009BC49D /* LocalUser.swift */,
 				0BB929E12899118900ACFE3E /* SeccionUser.swift */,
+				0B8785F728A50E4D00E7821E /* SensorUser.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -178,6 +191,11 @@
 				0B0F4B7628A2B7810098A3E5 /* AddSeccionViewController.swift */,
 				0B32747C28A4F23300C84E3F /* UpdateLocalViewController.swift */,
 				0B32747E28A4FFED00C84E3F /* UpdateSeccionViewController.swift */,
+				0B8785F528A50A7900E7821E /* SensoresViewController.swift */,
+				0B8785F928A50F6300E7821E /* SensorCeldaTableViewCell.swift */,
+				0B8785FA28A50F6300E7821E /* SensorCeldaTableViewCell.xib */,
+				0B81BEAC28A55D9F003CAC51 /* AddSensorViewController.swift */,
+				0B81BEAE28A5ABE9003CAC51 /* UpdateSensorViewController.swift */,
 			);
 			path = SmrtCheese;
 			sourceTree = "<group>";
@@ -314,6 +332,7 @@
 				0BB929DE2899051C00ACFE3E /* SeccionCeldaTableViewCell.xib in Resources */,
 				628EBCDD287A4CA4008EB003 /* Main.storyboard in Resources */,
 				0BB2FD12289213CF009BC49D /* LocalCeldaTableViewCell.xib in Resources */,
+				0B8785FC28A50F6300E7821E /* SensorCeldaTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,10 +358,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BB929E22899118900ACFE3E /* SeccionUser.swift in Sources */,
+				0B8785F828A50E4D00E7821E /* SensorUser.swift in Sources */,
 				0B05A236288F5C5600EE9EEE /* LocalesViewController.swift in Sources */,
 				0BB929DD2899051C00ACFE3E /* SeccionCeldaTableViewCell.swift in Sources */,
 				0B32747D28A4F23400C84E3F /* UpdateLocalViewController.swift in Sources */,
 				0B0F4B7728A2B7810098A3E5 /* AddSeccionViewController.swift in Sources */,
+				0B81BEAF28A5ABE9003CAC51 /* UpdateSensorViewController.swift in Sources */,
 				0BB2FD11289213CF009BC49D /* LocalCeldaTableViewCell.swift in Sources */,
 				0BB929E02899058200ACFE3E /* SeccionesViewController.swift in Sources */,
 				0BBA5DE8288EF05900FDB71F /* LoginUser.swift in Sources */,
@@ -350,11 +371,14 @@
 				0BB2FD1428921DE6009BC49D /* LocalUser.swift in Sources */,
 				0B05A238288F7C0300EE9EEE /* PerfilViewController.swift in Sources */,
 				0B05A23A288FC2E500EE9EEE /* ProfileUser.swift in Sources */,
+				0B8785F628A50A7900E7821E /* SensoresViewController.swift in Sources */,
+				0B81BEAD28A55D9F003CAC51 /* AddSensorViewController.swift in Sources */,
 				0B32747F28A4FFED00C84E3F /* UpdateSeccionViewController.swift in Sources */,
 				0B0F4B7528A2B7530098A3E5 /* AddLocalViewController.swift in Sources */,
 				0BBA5DEA288F2E5D00FDB71F /* HomeTabBarController.swift in Sources */,
 				628EBCD6287A4CA4008EB003 /* AppDelegate.swift in Sources */,
 				0B9E41EF288A296A00BDD87B /* Api.swift in Sources */,
+				0B8785FB28A50F6300E7821E /* SensorCeldaTableViewCell.swift in Sources */,
 				0B9E41F3288A2B2000BDD87B /* RegisterUser.swift in Sources */,
 				628EBCD8287A4CA4008EB003 /* SceneDelegate.swift in Sources */,
 			);

@@ -8,11 +8,14 @@
 import UIKit
 import Network
 class LocalesViewController: UIViewController {
-    @IBOutlet weak var TablaLocales: UITableView!
-        
+    
     var Locales : [Queseria] = []
     var enviar_id : String?
     var local: Queseria?
+    
+    @IBOutlet weak var TablaLocales: UITableView!
+        
+    
     
     lazy var refreshControl:UIRefreshControl = {
         

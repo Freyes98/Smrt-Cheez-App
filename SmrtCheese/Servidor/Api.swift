@@ -341,6 +341,112 @@ final class Api {
             }
         }
     }
+
+    func Sensor_user(tkn:Token,id_sensor:String, completionHandler: @escaping Handler){
+        
+        let url_sensores = "\(url_base)sensores/\(id_sensor)/get"
+
+        AF.request(url_sensores,parameters: tkn).response{ response in
+            debugPrint(response)
+            
+            switch response.result{
+            case .success(let data):
+                do {
+                    let json = try JSONDecoder().decode(Sensores.self, from: data!)
+
+                    if response.response?.statusCode == 200{
+                        
+                        
+                        completionHandler(.success(json))
+                    }else{
+                        completionHandler(.failure(.custom(message: "checa tu conexion a internet")))}
+                    
+                }catch {
+                    completionHandler(.failure(.custom(message: "intenta de nuevo")))
+                }
+            case .failure(let err):
+                print(err.localizedDescription)
+            }
+        }
+    }
     
+    func update_Sensor(sensor: SensorEnc,id:String, completionHandler: @escaping (Bool) ->()){
+        let url_Update_seccion = "\(url_base)apartados/\(id)/update"
+        let headers: HTTPHeaders = [.contentType("application/json")]
+        
+        AF.request(url_Update_seccion,method:.patch,parameters:sensor,encoder:JSONParameterEncoder.default, headers: headers).response{ response in
+            debugPrint(response)
+            
+            switch response.result{
+            case .success(let data):
+                do {
+                   try JSONSerialization.jsonObject(with: data!,options: [])
+                    if response.response?.statusCode == 200{
+                        completionHandler(true)
+                    }else{
+                        completionHandler(false)
+                    }
+                }catch {
+                    completionHandler(false)
+                }
+            case .failure(let err):
+                print(err.localizedDescription)
+            }
+        }
+    }
+    
+    func delete_Sensor(tkn:Token,id:String, completionHandler: @escaping Handler){
+        
+        let url_delete_sensor = "\(url_base)sensores/\(id)/destroy"
+        
+        AF.request(url_delete_sensor,method:.delete,parameters: tkn).response{ response in
+            debugPrint(response)
+            
+            switch response.result{
+            case .success(let data):
+                do {
+                    let json = try JSONDecoder().decode(ResponseProfile.self, from: data!)
+
+                    if response.response?.statusCode == 200{
+                        completionHandler(.success(json))
+                    }else{
+                        completionHandler(.failure(.custom(message: "checa tu conexion a internet")))}
+                    
+                }catch {
+                    completionHandler(.failure(.custom(message: "intenta de nuevo")))
+                }
+            case .failure(let err):
+                print(err.localizedDescription)
+            }
+        }
+    }
+    
+    
+    func Add_Sensor(sensor: SensorEnc,id_seccion:String, completionHandler: @escaping (Bool) ->()){
+   
+        let url_Add_Sensor = "\(url_base)sensores/\(id_seccion)/create"
+
+        let headers: HTTPHeaders = [.contentType("application/json")]
+        
+        AF.request(url_Add_Sensor,method:.post,parameters:sensor,encoder:JSONParameterEncoder.default, headers: headers).response{ response in
+            debugPrint(response)
+            
+            switch response.result{
+            case .success(let data):
+                do {
+                   try JSONSerialization.jsonObject(with: data!,options: [])
+                    if response.response?.statusCode == 200{
+                        completionHandler(true)
+                    }else{
+                        completionHandler(false)
+                    }
+                }catch {
+                    completionHandler(false)
+                }
+            case .failure(let err):
+                print(err.localizedDescription)
+            }
+        }
+    }
 }
 
