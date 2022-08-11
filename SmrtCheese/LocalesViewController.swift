@@ -114,12 +114,58 @@ extension LocalesViewController: UITableViewDelegate, UITableViewDataSource {
         
       let deleteItem = UIContextualAction(style: .destructive, title: "Eliminar") {  (contextualAction, view, boolValue) in
             //Code I want to do here
+          self.deleteAction(seccion: self.Locales[indexPath.row], indexpath: indexPath)
       }
         editItem.backgroundColor = .black
-        let swipeActions = UISwipeActionsConfiguration(actions: [editItem,deleteItem])
+        let swipeActions = UISwipeActionsConfiguration(actions: [deleteItem,editItem])
 
       return swipeActions
   }
+    
+    private func updateAction(seccion:Queseria,indexpath: IndexPath){
+        
+    }
+    private func deleteAction(seccion:Queseria,indexpath: IndexPath){
+        
+        let alert = UIAlertController(title: "Delete", message: "Estas seguro que deseas eliminar?", preferredStyle: .alert)
+        let deleteAction = UIAlertAction(title: "yes", style: .default){(action) in
+            
+            let datos = UserDefaults.standard
+            let token = datos.value(forKey: "token") as? String
+                
+            let tkn = Token(type: nil, token: token)
+            Api.shared.delete_Queseria(tkn: tkn,id:self.Locales[indexpath.row].id ?? ""){ [self](result) in
+                switch result {
+            //
+                case .success(let json):
+                    let countt = (json as! Locales).count
+                    Locales = json as! [Queseria]
+                    print(countt)
+            //
+                case .failure(let err):
+                    print(err.localizedDescription)
+            //
+                    self.TablaLocales.register(UINib(nibName: "LocalCeldaTableViewCell", bundle: nil), forCellReuseIdentifier: "celdaLocal")
+            
+                    self.TablaLocales.delegate = self
+                    self.TablaLocales.dataSource = self
+            //
+            }
+                self.TablaLocales.reloadData()
+                refreshControl.endRefreshing()
+
+            }
+            
+            self.Locales.remove(at: indexpath.row)
+            self.TablaLocales?.deleteRows(at: [indexpath], with: .automatic)
+            
+        }
+        
+        let cancelAction = UIAlertAction(title: "No", style: .default, handler: nil)
+        alert.addAction(deleteAction)
+        alert.addAction(cancelAction)
+        self.present(alert,animated: true)
+    }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

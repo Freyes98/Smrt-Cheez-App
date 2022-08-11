@@ -131,14 +131,60 @@ extension SeccionesViewController: UITableViewDelegate,UITableViewDataSource{
         
       let deleteItem = UIContextualAction(style: .destructive, title: "Eliminar") {  (contextualAction, view, boolValue) in
             //Code I want to do here
+          self.deleteAction(seccion: self.Apartados[indexPath.row], indexpath: indexPath)
       }
         editItem.backgroundColor = .black
-        let swipeActions = UISwipeActionsConfiguration(actions: [editItem,deleteItem])
+        let swipeActions = UISwipeActionsConfiguration(actions: [deleteItem,editItem])
 
       return swipeActions
   }
     
+    private func updateAction(seccion:Seccion,indexpath: IndexPath){
+        
+    }
+    private func deleteAction(seccion:Seccion,indexpath: IndexPath){
+        
+        
+        let alert = UIAlertController(title: "Delete", message: "Estas seguro que deseas eliminar?", preferredStyle: .alert)
+        let deleteAction = UIAlertAction(title: "yes", style: .default){(action) in
+            
+            let datos = UserDefaults.standard
+            let token = datos.value(forKey: "token") as? String
+                
+            let tkn = Token(type: nil, token: token)
+            Api.shared.delete_Seccion(tkn: tkn,id:self.Apartados[indexpath.row].id ){ [self](result) in
+                switch result {
+            //
+                case .success(let json):
+                    let countt = (json as! Secciones).count
+                    Apartados = json as! [Seccion]
+                    print(countt)
+            //
+                case .failure(let err):
+                    print(err.localizedDescription)
+            //
+                    self.TablaSecciones.register(UINib(nibName: "SeccionCeldaTableViewCell", bundle: nil), forCellReuseIdentifier: "celdaSeccion")
+            
+                    self.TablaSecciones.delegate = self
+                    self.TablaSecciones.dataSource = self
+            //
+            }
+                self.TablaSecciones.reloadData()
+                refreshControl.endRefreshing()
+
+            }
+            
+            self.Apartados.remove(at: indexpath.row)
+            self.TablaSecciones?.deleteRows(at: [indexpath], with: .automatic)
+            
+        }
+        
+        let cancelAction = UIAlertAction(title: "No", style: .default, handler: nil)
+        alert.addAction(deleteAction)
+        alert.addAction(cancelAction)
+        self.present(alert,animated: true)
     
+    }
     
 }
 

@@ -131,6 +131,32 @@ final class Api {
         }
     }
     
+    func delete_Queseria(tkn:Token,id:String, completionHandler: @escaping Handler){
+        
+        let url_delete_queseria = "\(url_base)queseria/delete/\(id)"
+        
+        AF.request(url_delete_queseria,method:.delete,parameters: tkn).response{ response in
+            debugPrint(response)
+            
+            switch response.result{
+            case .success(let data):
+                do {
+                    let json = try JSONDecoder().decode(ResponseProfile.self, from: data!)
+
+                    if response.response?.statusCode == 200{
+                        completionHandler(.success(json))
+                    }else{
+                        completionHandler(.failure(.custom(message: "checa tu conexion a internet")))}
+                    
+                }catch {
+                    completionHandler(.failure(.custom(message: "intenta de nuevo")))
+                }
+            case .failure(let err):
+                print(err.localizedDescription)
+            }
+        }
+    }
+    
     
     func Local_user(tkn:Token, completionHandler: @escaping Handler){
         
@@ -203,6 +229,32 @@ final class Api {
                     }
                 }catch {
                     completionHandler(false)
+                }
+            case .failure(let err):
+                print(err.localizedDescription)
+            }
+        }
+    }
+    
+    func delete_Seccion(tkn:Token,id:String, completionHandler: @escaping Handler){
+        
+        let url_delete_seccion = "\(url_base)apartados/\(id)/destroy"
+        
+        AF.request(url_delete_seccion,method:.delete,parameters: tkn).response{ response in
+            debugPrint(response)
+            
+            switch response.result{
+            case .success(let data):
+                do {
+                    let json = try JSONDecoder().decode(ResponseProfile.self, from: data!)
+
+                    if response.response?.statusCode == 200{
+                        completionHandler(.success(json))
+                    }else{
+                        completionHandler(.failure(.custom(message: "checa tu conexion a internet")))}
+                    
+                }catch {
+                    completionHandler(.failure(.custom(message: "intenta de nuevo")))
                 }
             case .failure(let err):
                 print(err.localizedDescription)
