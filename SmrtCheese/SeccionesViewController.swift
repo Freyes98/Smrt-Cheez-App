@@ -13,6 +13,7 @@ class SeccionesViewController: UIViewController {
     
     var Apartados : [Seccion] = []
     var recibir_id : String?
+    var seccion: Seccion?
     
     lazy var refreshControl:UIRefreshControl = {
         
@@ -103,6 +104,10 @@ class SeccionesViewController: UIViewController {
             let destino = segue.destination as! AddSeccionViewController
             destino.recibir_id_queseria = recibir_id
         }
+        if segue.identifier == "enviar_update"{
+            let update_seccion = segue.destination as! UpdateSeccionViewController
+            update_seccion.seccion = seccion
+        }
     }
 }
 
@@ -127,6 +132,10 @@ extension SeccionesViewController: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
       let editItem = UIContextualAction(style: .destructive, title: "Editar") {  (contextualAction, view, boolValue) in
           //Code I want to do here
+          
+          self.seccion = self.Apartados[indexPath.row]
+          self.performSegue(withIdentifier: "enviar_update", sender: self)
+          
       }
         
       let deleteItem = UIContextualAction(style: .destructive, title: "Eliminar") {  (contextualAction, view, boolValue) in
@@ -140,6 +149,8 @@ extension SeccionesViewController: UITableViewDelegate,UITableViewDataSource{
   }
     
     private func updateAction(seccion:Seccion,indexpath: IndexPath){
+        
+        
         
     }
     private func deleteAction(seccion:Seccion,indexpath: IndexPath){

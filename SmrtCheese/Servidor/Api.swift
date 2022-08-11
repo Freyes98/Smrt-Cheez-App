@@ -131,6 +131,33 @@ final class Api {
         }
     }
     
+    func update_Queseria(local: Local,id:String, completionHandler: @escaping (Bool) ->()){
+
+        let url_Update_quseria = "\(url_base)queseria/update/\(id)"
+        //queseria/update/62db2111bb3b833f987be7cd
+        let headers: HTTPHeaders = [.contentType("application/json")]
+        
+        AF.request(url_Update_quseria,method:.patch,parameters:local,encoder:JSONParameterEncoder.default, headers: headers).response{ response in
+            debugPrint(response)
+            
+            switch response.result{
+            case .success(let data):
+                do {
+                   try JSONSerialization.jsonObject(with: data!,options: [])
+                    if response.response?.statusCode == 200{
+                        completionHandler(true)
+                    }else{
+                        completionHandler(false)
+                    }
+                }catch {
+                    completionHandler(false)
+                }
+            case .failure(let err):
+                print(err.localizedDescription)
+            }
+        }
+    }
+    
     func delete_Queseria(tkn:Token,id:String, completionHandler: @escaping Handler){
         
         let url_delete_queseria = "\(url_base)queseria/delete/\(id)"
@@ -216,6 +243,31 @@ final class Api {
         let headers: HTTPHeaders = [.contentType("application/json")]
         
         AF.request(url_seccionadd,method:.post,parameters:Seccion,encoder:JSONParameterEncoder.default, headers: headers).response{ response in
+            debugPrint(response)
+            
+            switch response.result{
+            case .success(let data):
+                do {
+                   try JSONSerialization.jsonObject(with: data!,options: [])
+                    if response.response?.statusCode == 200{
+                        completionHandler(true)
+                    }else{
+                        completionHandler(false)
+                    }
+                }catch {
+                    completionHandler(false)
+                }
+            case .failure(let err):
+                print(err.localizedDescription)
+            }
+        }
+    }
+    //Esta funcion no tranaka por que aun no existe la URL
+    func update_Seccion(seccion: SeccionEnc,id:String, completionHandler: @escaping (Bool) ->()){
+        let url_Update_seccion = "\(url_base)apartados/\(id)/update"
+        let headers: HTTPHeaders = [.contentType("application/json")]
+        
+        AF.request(url_Update_seccion,method:.patch,parameters:seccion,encoder:JSONParameterEncoder.default, headers: headers).response{ response in
             debugPrint(response)
             
             switch response.result{

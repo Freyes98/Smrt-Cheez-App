@@ -12,6 +12,7 @@ class LocalesViewController: UIViewController {
         
     var Locales : [Queseria] = []
     var enviar_id : String?
+    var local: Queseria?
     
     lazy var refreshControl:UIRefreshControl = {
         
@@ -110,6 +111,9 @@ extension LocalesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
       let editItem = UIContextualAction(style: .destructive, title: "Editar") {  (contextualAction, view, boolValue) in
           //Code I want to do here
+          self.local = self.Locales[indexPath.row]
+          self.performSegue(withIdentifier: "enviar_edit", sender: self)
+          
       }
         
       let deleteItem = UIContextualAction(style: .destructive, title: "Eliminar") {  (contextualAction, view, boolValue) in
@@ -122,9 +126,7 @@ extension LocalesViewController: UITableViewDelegate, UITableViewDataSource {
       return swipeActions
   }
     
-    private func updateAction(seccion:Queseria,indexpath: IndexPath){
-        
-    }
+
     private func deleteAction(seccion:Queseria,indexpath: IndexPath){
         
         let alert = UIAlertController(title: "Delete", message: "Estas seguro que deseas eliminar?", preferredStyle: .alert)
@@ -172,7 +174,11 @@ extension LocalesViewController: UITableViewDelegate, UITableViewDataSource {
         if segue.identifier == "enviar_id" {
             let secciones = segue.destination as! SeccionesViewController
             secciones.recibir_id = enviar_id
+        }
+        if segue.identifier == "enviar_edit"{
             
+            let update_local = segue.destination as! UpdateLocalViewController
+            update_local.local = local
         }
     }
     
