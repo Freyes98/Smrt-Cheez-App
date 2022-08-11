@@ -124,6 +124,20 @@ extension SeccionesViewController: UITableViewDelegate,UITableViewDataSource{
         return celda
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+      let editItem = UIContextualAction(style: .destructive, title: "Editar") {  (contextualAction, view, boolValue) in
+          //Code I want to do here
+      }
+        
+      let deleteItem = UIContextualAction(style: .destructive, title: "Eliminar") {  (contextualAction, view, boolValue) in
+            //Code I want to do here
+      }
+        editItem.backgroundColor = .black
+        let swipeActions = UISwipeActionsConfiguration(actions: [editItem,deleteItem])
+
+      return swipeActions
+  }
+    
     
     
 }
