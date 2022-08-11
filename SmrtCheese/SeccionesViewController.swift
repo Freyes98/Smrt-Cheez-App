@@ -14,6 +14,47 @@ class SeccionesViewController: UIViewController {
     var Apartados : [Seccion] = []
     var recibir_id : String?
     
+    lazy var refreshControl:UIRefreshControl = {
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(LocalesViewController.actualizarDatos(_:)), for: .valueChanged)
+        //color de rueda
+        refreshControl.tintColor = UIColor.black
+        
+        return refreshControl
+    }()
+    
+    @objc func actualizarDatos(_ refreshControl: UIRefreshControl){
+        
+        
+        let datos = UserDefaults.standard
+        let token = datos.value(forKey: "token") as? String
+            
+        let tkn = Token(type: nil, token: token)
+        
+        Api.shared.Seccion_user(tkn: tkn,id_queseria:recibir_id ?? ""){ [self](result) in
+            switch result {
+            case .success(let json):
+                let countt = (json as! Secciones).count
+                Apartados = json as! [Seccion]
+                print(countt)
+            case .failure(let err):
+                print(err.localizedDescription)
+ }
+        
+            self.TablaSecciones.register(UINib(nibName: "SeccionCeldaTableViewCell", bundle: nil), forCellReuseIdentifier: "celdaSeccion")
+    
+            self.TablaSecciones.delegate = self
+            self.TablaSecciones.dataSource = self
+        
+
+        }
+            self.TablaSecciones.reloadData()
+            refreshControl.endRefreshing()
+
+        }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,6 +77,8 @@ class SeccionesViewController: UIViewController {
     
             self.TablaSecciones.delegate = self
             self.TablaSecciones.dataSource = self
+            
+            self.TablaSecciones.addSubview(refreshControl)
         
 
         }
@@ -43,11 +86,18 @@ class SeccionesViewController: UIViewController {
     }
   
     
-
+    //FUNCION PARA ENVIAR ID DEL LOCAL A LA SECCION
     @IBAction func Addlocal(_ sender: Any) {
         performSegue(withIdentifier: "enviar_id", sender: self)
 
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.TablaSecciones.reloadData()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "enviar_id"{
             let destino = segue.destination as! AddSeccionViewController

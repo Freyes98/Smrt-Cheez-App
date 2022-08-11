@@ -33,29 +33,79 @@ class AddLocalViewController: UIViewController {
         guard let nombre = name_local.text, let descripcion = descripcion_local.text, let horario = horario_local.text, let telefono = telefono_local.text,let direccion = direccion_local.text else {
             return
         }
-        let local = Local(nombre_queseria: nombre, telefono: telefono, direccion: direccion, horarios: horario, descripcion: descripcion,token: tkn)
+        //VALIDACIONES
+    
         
-        Api.shared.Add_Local(local: local){(isSucess) in
-            if isSucess {
-            let alert = UIAlertController(title: "Registro", message: "Local registrado correctamente", preferredStyle: UIAlertController.Style.alert)
-
-                    // add an action (button)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-                
-                    // show the alert
-                    self.present(alert, animated: true, completion: nil)
-                
-            }
+        if telefono.count < 7{
+                 let alert = UIAlertController(title: "Invalid num", message: "Ingrese un numero de teledono valido", preferredStyle: UIAlertController.Style.alert)
+                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             
-            else {
-                let alert = UIAlertController(title: "Error", message: "verifique sus datos", preferredStyle: UIAlertController.Style.alert)
+                 self.present(alert, animated: true, completion: nil)
+            telefono_local.text = ""
+                
+                    
+        }
+        else if nombre.count < 4{
+            let alert = UIAlertController(title: "Invalid name", message: "ingrese un nombre de local real", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            name_local.text = ""
+        }
+        else if descripcion.count < 4 {
+            let alert = UIAlertController(title: "Invalid num", message: "Ingrese una descripcion mas larga", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+       
+            self.present(alert, animated: true, completion: nil)
+            descripcion_local.text = ""
+        }
+        else if horario.count < 4 {
+            let alert = UIAlertController(title: "Invalid schedule", message: "Ingrese una horario valido", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            horario_local.text = ""
+        }
+        
+        else if direccion.count < 4 {
+            let alert = UIAlertController(title: "Invalid address", message: "Ingrese una horario valido", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            direccion_local.text = ""
+        }
+        else {
+            let local = Local(nombre_queseria: nombre, telefono: telefono, direccion: direccion, horarios: horario, descripcion: descripcion,token: tkn)
+            
+            Api.shared.Add_Local(local: local){(isSucess) in
+                if isSucess {
+                let alert = UIAlertController(title: "Registro", message: "Local registrado correctamente", preferredStyle: UIAlertController.Style.alert)
 
                         // add an action (button)
                         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-
+                    
                         // show the alert
-                        self.present(alert, animated: true, completion: nil)}
+                        self.present(alert, animated: true, completion: nil)
+                    
+                    self.name_local.text = ""
+                    self.descripcion_local.text = ""
+                    self.horario_local.text = ""
+                    self.telefono_local.text = ""
+                    self.direccion_local.text = ""
+                    
+                }
+                
+                else {
+                    let alert = UIAlertController(title: "Error", message: "verifique sus datos", preferredStyle: UIAlertController.Style.alert)
+
+                            // add an action (button)
+                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+
+                            // show the alert
+                            self.present(alert, animated: true, completion: nil)}
+            }
         }
+        
+        
+        
+    
         
     }
     

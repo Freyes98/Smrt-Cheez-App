@@ -13,6 +13,47 @@ class LocalesViewController: UIViewController {
     var Locales : [Queseria] = []
     var enviar_id : String?
     
+    lazy var refreshControl:UIRefreshControl = {
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(LocalesViewController.actualizarDatos(_:)), for: .valueChanged)
+        //color de rueda
+        refreshControl.tintColor = UIColor.black
+        
+        return refreshControl
+    }()
+    
+    @objc func actualizarDatos(_ refreshControl: UIRefreshControl){
+        
+        
+        let datos = UserDefaults.standard
+        let token = datos.value(forKey: "token") as? String
+            
+        let tkn = Token(type: nil, token: token)
+        
+        Api.shared.Local_user(tkn: tkn){ [self](result) in
+            switch result {
+                
+            case .success(let json):
+                let countt = (json as! Locales).count
+                Locales = json as! [Queseria]
+                print(countt)
+                
+            case .failure(let err):
+                print(err.localizedDescription)
+                
+                self.TablaLocales.register(UINib(nibName: "LocalCeldaTableViewCell", bundle: nil), forCellReuseIdentifier: "celdaLocal")
+        
+                self.TablaLocales.delegate = self
+                self.TablaLocales.dataSource = self
+                
+        }
+            self.TablaLocales.reloadData()
+            refreshControl.endRefreshing()
+
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,14 +71,17 @@ class LocalesViewController: UIViewController {
             case .failure(let err):
                 print(err.localizedDescription)
         }
-        
             self.TablaLocales.register(UINib(nibName: "LocalCeldaTableViewCell", bundle: nil), forCellReuseIdentifier: "celdaLocal")
-    
+
             self.TablaLocales.delegate = self
             self.TablaLocales.dataSource = self
-        
-
         }
+        
+        
+        
+        
+        self.TablaLocales.addSubview(refreshControl)
+        
     }
     
 }
@@ -73,6 +117,8 @@ extension LocalesViewController: UITableViewDelegate, UITableViewDataSource {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        self.TablaLocales.reloadData()
         
         let monitor = NWPathMonitor()
                monitor.pathUpdateHandler = { path in

@@ -29,29 +29,59 @@ class AddSeccionViewController: UIViewController {
         guard let nombre = nombre_seccion.text, let descripcion = descripcion_seccion.text else {
             return
         }
-        let seccion = SeccionEnc(nombre_apartado: nombre, descripcion: descripcion, token: tkn)
         
-        Api.shared.Add_Seccion(Seccion: seccion,id_quseria: recibir_id_queseria ?? ""){(isSucess) in
-            if isSucess {
-            let alert = UIAlertController(title: "Registro", message: "Seccion registrado correctamente", preferredStyle: UIAlertController.Style.alert)
+        //validaciones
+        if nombre.count < 2{
+            let alert = UIAlertController(title: "Invalid name", message: "Verifique el nombre", preferredStyle: UIAlertController.Style.alert)
 
                     // add an action (button)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                 
                     // show the alert
                     self.present(alert, animated: true, completion: nil)
+        }
+        else if descripcion.count < 2 {
+            let alert = UIAlertController(title: "Invalid description", message: "Verifique la descripcion", preferredStyle: UIAlertController.Style.alert)
+
+                    // add an action (button)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                 
-            }
+                    // show the alert
+                    self.present(alert, animated: true, completion: nil)
+        }
+        else {
             
-            else {
-                let alert = UIAlertController(title: "Error", message: "verifique sus datos", preferredStyle: UIAlertController.Style.alert)
+            let seccion = SeccionEnc(nombre_apartado: nombre, descripcion: descripcion, token: tkn)
+            
+            Api.shared.Add_Seccion(Seccion: seccion,id_quseria: recibir_id_queseria ?? ""){(isSucess) in
+                if isSucess {
+                let alert = UIAlertController(title: "Registro", message: "Seccion registrado correctamente", preferredStyle: UIAlertController.Style.alert)
 
                         // add an action (button)
                         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-
+                    
                         // show the alert
-                        self.present(alert, animated: true, completion: nil)}
+                        self.present(alert, animated: true, completion: nil)
+                    
+                    self.nombre_seccion.text = ""
+                    self.descripcion_seccion.text = ""
+                    
+                }
+                
+                else {
+                    let alert = UIAlertController(title: "Error", message: "verifique sus datos", preferredStyle: UIAlertController.Style.alert)
+
+                            // add an action (button)
+                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+
+                            // show the alert
+                            self.present(alert, animated: true, completion: nil)}
+            }
         }
+        
+        
+        
+
         
             }
     
