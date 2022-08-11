@@ -23,6 +23,7 @@ final class Api {
     var url_profile = "\(url_base)users/user"
     var url_queseria = "\(url_base)queseria/index"
     var url_Add_quseria = "\(url_base)queseria/create"
+    var url_update_profile = "\(url_base)users/update"
     
     
 
@@ -104,6 +105,32 @@ final class Api {
             }
         }
     }
+    
+    func Update_Profile(profile: ProfilEnc, completionHandler: @escaping (Bool) ->()){
+
+        let headers: HTTPHeaders = [.contentType("application/json")]
+        
+        AF.request(url_update_profile,method:.put,parameters:profile,encoder:JSONParameterEncoder.default, headers: headers).response{ response in
+            debugPrint(response)
+            
+            switch response.result{
+            case .success(let data):
+                do {
+                   try JSONSerialization.jsonObject(with: data!,options: [])
+                    if response.response?.statusCode == 200{
+                        completionHandler(true)
+                    }else{
+                        completionHandler(false)
+                    }
+                }catch {
+                    completionHandler(false)
+                }
+            case .failure(let err):
+                print(err.localizedDescription)
+            }
+        }
+    }
+    
     
     func Local_user(tkn:Token, completionHandler: @escaping Handler){
         

@@ -10,10 +10,11 @@ import Alamofire
 import Network
 class PerfilViewController: UIViewController {
 
-    @IBOutlet weak var myemail: UILabel!
-    @IBOutlet weak var mylastname: UILabel!
-    @IBOutlet weak var myname: UILabel!
- 
+    
+    @IBOutlet weak var myname: UITextField!
+    @IBOutlet weak var mylastname: UITextField!
+    @IBOutlet weak var myemail: UITextField!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,6 +100,45 @@ class PerfilViewController: UIViewController {
         let LoginRegisterViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginRegisterViewController") as! LoginRegisterViewController
         self.dismiss(animated: true, completion: nil)
         self.present(LoginRegisterViewController,animated: true,completion: nil)
+        
+        
+    }
+    @IBAction func actualizarDatos(_ sender: Any) {
+        
+        
+        let datos = UserDefaults.standard
+        let token = datos.value(forKey: "token") as? String
+        
+        
+        guard let name = myname.text, let lastname = mylastname.text, let email = myemail.text
+        else {
+            return
+        }
+        let usuario = ProfilEnc(email: email, fname: name, lname: lastname, token: token)
+        
+        Api.shared.Update_Profile(profile: usuario){(isSucess) in
+            if isSucess {
+            let alert = UIAlertController(title: "Update", message: "Usuario actualizado correctamente", preferredStyle: UIAlertController.Style.alert)
+
+                    // add an action (button)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                
+                    // show the alert
+                    self.present(alert, animated: true, completion: nil)
+                
+            }
+            
+            else {
+                let alert = UIAlertController(title: "Error", message: "Error al actualizar", preferredStyle: UIAlertController.Style.alert)
+
+                        // add an action (button)
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+
+                        // show the alert
+                        self.present(alert, animated: true, completion: nil)}
+        }
+        
+        
         
         
     }

@@ -7,6 +7,14 @@
 
 import Foundation
 
+struct ProfilEnc: Encodable {
+    
+    let email: String?
+    let fname: String?
+    let lname: String?
+    let token: String?
+}
+
 struct ResponseProfile: Codable {
     let id: String
     let email: String
