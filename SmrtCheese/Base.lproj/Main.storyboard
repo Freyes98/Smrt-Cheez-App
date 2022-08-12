@@ -894,28 +894,29 @@
                         <outlet property="TablaSensores" destination="pS5-rC-z9P" id="ga5-ib-MPc"/>
                         <outlet property="labelselecion" destination="QdH-JW-4KC" id="UY7-Bk-1O1"/>
                         <segue destination="yhq-wK-eq5" kind="show" identifier="enviar_update" id="bwT-ZJ-Kyo"/>
+                        <segue destination="OoQ-7c-hzf" kind="show" identifier="sensor_value" id="xld-Bi-YEZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xFo-KJ-Brd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4570" y="-198"/>
         </scene>
-        <!--View Controller-->
+        <!--Sensor Values View Controller-->
         <scene sceneID="cjF-ST-r5s">
             <objects>
-                <viewController id="OoQ-7c-hzf" sceneMemberID="viewController">
+                <viewController id="OoQ-7c-hzf" customClass="SensorValuesViewController" customModule="SmrtCheese" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OhK-kv-hsn">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iyL-CS-5Ls">
-                                <rect key="frame" x="0.0" y="244" width="428" height="300"/>
+                                <rect key="frame" x="0.0" y="288" width="428" height="300"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="fiv-Zm-8Qy"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sensor" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SQc-Wl-4Ia">
-                                <rect key="frame" x="20" y="564" width="388" height="60"/>
+                                <rect key="frame" x="20" y="608" width="388" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="Zzw-Fj-412"/>
                                 </constraints>
@@ -924,13 +925,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="medida" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wmR-lU-Edo">
-                                <rect key="frame" x="20" y="704" width="388" height="65.666666666666629"/>
+                                <rect key="frame" x="20" y="748" width="388" height="65.666666666666629"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="55"/>
                                 <color key="textColor" systemColor="systemOrangeColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dOv-kr-4hs">
-                                <rect key="frame" x="20" y="849.66666666666663" width="388" height="62"/>
+                                <rect key="frame" x="20" y="893.66666666666663" width="388" height="62"/>
                                 <color key="backgroundColor" red="1" green="0.94833026529999997" blue="0.33640198389999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
@@ -956,10 +957,16 @@
                             <constraint firstItem="iyL-CS-5Ls" firstAttribute="leading" secondItem="MCi-Mp-zrl" secondAttribute="leading" id="vsW-eR-0Qr"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Ijs-wn-7LT"/>
+                    <connections>
+                        <outlet property="name_sensor" destination="SQc-Wl-4Ia" id="Bik-02-Wbh"/>
+                        <outlet property="sensor_img" destination="iyL-CS-5Ls" id="lD9-nP-6W7"/>
+                        <outlet property="value_sensor" destination="wmR-lU-Edo" id="vYM-aL-qgq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2nm-91-rFa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5440.6542056074759" y="-200.21598272138232"/>
+            <point key="canvasLocation" x="5504" y="-201"/>
         </scene>
         <!--Locales-->
         <scene sceneID="4FM-p7-2Cb">

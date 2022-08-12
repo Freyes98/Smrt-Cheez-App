@@ -448,5 +448,36 @@ final class Api {
             }
         }
     }
+    
+    
+    
+    func Sensor_values(tkn:Token,id_sensor:String, completionHandler: @escaping Handler){
+        
+        
+        let url_values = "\(url_base)values/\(id_sensor)/get"
+
+        AF.request(url_values,parameters: tkn).response{ response in
+            debugPrint(response)
+            
+            switch response.result{
+            case .success(let data):
+                do {
+                    let json = try JSONDecoder().decode(Values.self, from: data!)
+
+                    if response.response?.statusCode == 200{
+                        
+                        
+                        completionHandler(.success(json))
+                    }else{
+                        completionHandler(.failure(.custom(message: "checa tu conexion a internet")))}
+                    
+                }catch {
+                    completionHandler(.failure(.custom(message: "intenta de nuevo")))
+                }
+            case .failure(let err):
+                print(err.localizedDescription)
+            }
+        }
+    }
 }
 

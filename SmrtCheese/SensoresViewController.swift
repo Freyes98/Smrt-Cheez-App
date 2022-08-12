@@ -107,11 +107,11 @@ class SensoresViewController: UIViewController {
         }
         //este sera para enviar id del sensor seleccionado a la pantalla sensor
         
-        //if segue.identifier == "enviar_id_sensor"{
-        //    let sensor = segue.destination as! SensoresViewController
-        //    sensor.recibir_id = enviar_id
+        if segue.identifier == "sensor_value"{
+            let value = segue.destination as! SensorValuesViewController
+            value.sensor = sensor
         
-        //}
+        }
     }
     
   
@@ -158,7 +158,8 @@ extension SensoresViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         self.enviar_id = sensors[indexPath.row].id
-        //self.performSegue(withIdentifier: "enviar_id", sender: self)
+        self.sensor = sensors[indexPath.row]
+        self.performSegue(withIdentifier: "sensor_value", sender: self)
     }
     
     private func updateAction(sensor:Sensor,indexpath: IndexPath){

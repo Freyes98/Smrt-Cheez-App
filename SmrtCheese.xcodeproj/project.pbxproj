@@ -16,6 +16,8 @@
 		0B32747F28A4FFED00C84E3F /* UpdateSeccionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B32747E28A4FFED00C84E3F /* UpdateSeccionViewController.swift */; };
 		0B81BEAD28A55D9F003CAC51 /* AddSensorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B81BEAC28A55D9F003CAC51 /* AddSensorViewController.swift */; };
 		0B81BEAF28A5ABE9003CAC51 /* UpdateSensorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B81BEAE28A5ABE9003CAC51 /* UpdateSensorViewController.swift */; };
+		0B81BEB128A5CBBE003CAC51 /* SensorValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B81BEB028A5CBBE003CAC51 /* SensorValues.swift */; };
+		0B81BEB328A5D5CA003CAC51 /* SensorValuesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B81BEB228A5D5CA003CAC51 /* SensorValuesViewController.swift */; };
 		0B8785F628A50A7900E7821E /* SensoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8785F528A50A7900E7821E /* SensoresViewController.swift */; };
 		0B8785F828A50E4D00E7821E /* SensorUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8785F728A50E4D00E7821E /* SensorUser.swift */; };
 		0B8785FB28A50F6300E7821E /* SensorCeldaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8785F928A50F6300E7821E /* SensorCeldaTableViewCell.swift */; };
@@ -70,6 +72,8 @@
 		0B32747E28A4FFED00C84E3F /* UpdateSeccionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateSeccionViewController.swift; sourceTree = "<group>"; };
 		0B81BEAC28A55D9F003CAC51 /* AddSensorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSensorViewController.swift; sourceTree = "<group>"; };
 		0B81BEAE28A5ABE9003CAC51 /* UpdateSensorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateSensorViewController.swift; sourceTree = "<group>"; };
+		0B81BEB028A5CBBE003CAC51 /* SensorValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorValues.swift; sourceTree = "<group>"; };
+		0B81BEB228A5D5CA003CAC51 /* SensorValuesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorValuesViewController.swift; sourceTree = "<group>"; };
 		0B8785F528A50A7900E7821E /* SensoresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensoresViewController.swift; sourceTree = "<group>"; };
 		0B8785F728A50E4D00E7821E /* SensorUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorUser.swift; sourceTree = "<group>"; };
 		0B8785F928A50F6300E7821E /* SensorCeldaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorCeldaTableViewCell.swift; sourceTree = "<group>"; };
@@ -143,6 +147,7 @@
 				0BB2FD1328921DE6009BC49D /* LocalUser.swift */,
 				0BB929E12899118900ACFE3E /* SeccionUser.swift */,
 				0B8785F728A50E4D00E7821E /* SensorUser.swift */,
+				0B81BEB028A5CBBE003CAC51 /* SensorValues.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -196,6 +201,7 @@
 				0B8785FA28A50F6300E7821E /* SensorCeldaTableViewCell.xib */,
 				0B81BEAC28A55D9F003CAC51 /* AddSensorViewController.swift */,
 				0B81BEAE28A5ABE9003CAC51 /* UpdateSensorViewController.swift */,
+				0B81BEB228A5D5CA003CAC51 /* SensorValuesViewController.swift */,
 			);
 			path = SmrtCheese;
 			sourceTree = "<group>";
@@ -357,6 +363,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B81BEB328A5D5CA003CAC51 /* SensorValuesViewController.swift in Sources */,
 				0BB929E22899118900ACFE3E /* SeccionUser.swift in Sources */,
 				0B8785F828A50E4D00E7821E /* SensorUser.swift in Sources */,
 				0B05A236288F5C5600EE9EEE /* LocalesViewController.swift in Sources */,
@@ -371,6 +378,7 @@
 				0BB2FD1428921DE6009BC49D /* LocalUser.swift in Sources */,
 				0B05A238288F7C0300EE9EEE /* PerfilViewController.swift in Sources */,
 				0B05A23A288FC2E500EE9EEE /* ProfileUser.swift in Sources */,
+				0B81BEB128A5CBBE003CAC51 /* SensorValues.swift in Sources */,
 				0B8785F628A50A7900E7821E /* SensoresViewController.swift in Sources */,
 				0B81BEAD28A55D9F003CAC51 /* AddSensorViewController.swift in Sources */,
 				0B32747F28A4FFED00C84E3F /* UpdateSeccionViewController.swift in Sources */,
