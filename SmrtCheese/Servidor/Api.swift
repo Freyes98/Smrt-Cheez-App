@@ -267,7 +267,7 @@ final class Api {
         let url_Update_seccion = "\(url_base)apartados/\(id)/update"
         let headers: HTTPHeaders = [.contentType("application/json")]
         
-        AF.request(url_Update_seccion,method:.patch,parameters:seccion,encoder:JSONParameterEncoder.default, headers: headers).response{ response in
+        AF.request(url_Update_seccion,method:.put,parameters:seccion,encoder:JSONParameterEncoder.default, headers: headers).response{ response in
             debugPrint(response)
             
             switch response.result{
@@ -451,21 +451,23 @@ final class Api {
     
     
     
-    func Sensor_values(tkn:Token,id_sensor:String, completionHandler: @escaping Handler){
+    func Sensor_lastValue(tkn:Token,id_sensor:String, completionHandler: @escaping Handler){
         
         
         let url_values = "\(url_base)values/\(id_sensor)/get"
 
         AF.request(url_values,parameters: tkn).response{ response in
-            debugPrint(response)
+            //debugPrint(response)
             
             switch response.result{
             case .success(let data):
                 do {
-                    let json = try JSONDecoder().decode(Values.self, from: data!)
+                    
+                    
+                    let json = try JSONDecoder().decode(Values.self, from: data!).last
 
+                    
                     if response.response?.statusCode == 200{
-                        
                         
                         completionHandler(.success(json))
                     }else{

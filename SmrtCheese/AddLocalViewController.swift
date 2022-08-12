@@ -9,18 +9,22 @@ import UIKit
 
 class AddLocalViewController: UIViewController {
     @IBOutlet weak var descripcion_local: UITextField!
-    @IBOutlet weak var horario_local: UITextField!
+    
     @IBOutlet weak var direccion_local: UITextField!
     @IBOutlet weak var telefono_local: UITextField!
     @IBOutlet weak var name_local: UITextField!
     @IBOutlet weak var Btn_Añadir: UIButton!
+    @IBOutlet weak var horario_apertura: UIDatePicker!
+    
+    @IBOutlet weak var horario_cierre: UIDatePicker!
     var recibir_id : String?
    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
+        //horario_apertura.Format = DateTimePickerFormat.Custom
+   
+     
 
         // Do any additional setup after loading the view.
     }
@@ -30,7 +34,7 @@ class AddLocalViewController: UIViewController {
         let datos = UserDefaults.standard
         let tkn = datos.value(forKey: "token") as? String
         
-        guard let nombre = name_local.text, let descripcion = descripcion_local.text, let horario = horario_local.text, let telefono = telefono_local.text,let direccion = direccion_local.text else {
+        guard let nombre = name_local.text, let descripcion = descripcion_local.text, let telefono = telefono_local.text,let direccion = direccion_local.text else {
             return
         }
         //VALIDACIONES
@@ -58,12 +62,6 @@ class AddLocalViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
             descripcion_local.text = ""
         }
-        else if horario.count < 4 {
-            let alert = UIAlertController(title: "Invalid schedule", message: "Ingrese una horario valido", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-            horario_local.text = ""
-        }
         
         else if direccion.count < 4 {
             let alert = UIAlertController(title: "Invalid address", message: "Ingrese una horario valido", preferredStyle: UIAlertController.Style.alert)
@@ -72,6 +70,15 @@ class AddLocalViewController: UIViewController {
             direccion_local.text = ""
         }
         else {
+            
+            //let apertura = Calendar.current.dateComponents([.hour, .minute], from: horario_apertura.date)
+            //let cierre = Calendar.current.dateComponents([.hour, .minute], from: horario_apertura.date)
+
+   
+            
+            
+            let horario = "De \(horario_apertura.date) A \(horario_cierre.date)"
+            
             let local = Local(nombre_queseria: nombre, telefono: telefono, direccion: direccion, horarios: horario, descripcion: descripcion,token: tkn)
             
             Api.shared.Add_Local(local: local){(isSucess) in
@@ -86,7 +93,6 @@ class AddLocalViewController: UIViewController {
                     
                     self.name_local.text = ""
                     self.descripcion_local.text = ""
-                    self.horario_local.text = ""
                     self.telefono_local.text = ""
                     self.direccion_local.text = ""
                     

@@ -497,12 +497,15 @@
                                     <action selector="Add_action:" destination="1LB-d8-hLy" eventType="touchUpInside" id="o4t-2y-9ah"/>
                                 </connections>
                             </button>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="iRg-ma-2ZF">
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="compact" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRg-ma-2ZF">
                                 <rect key="frame" x="454" y="510" width="90" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="90" id="Fub-5a-m3g"/>
                                     <constraint firstAttribute="height" constant="60" id="rMM-5N-5kt"/>
                                 </constraints>
+                                <date key="date" timeIntervalSinceReferenceDate="555760024.09534097">
+                                    <!--2018-08-12 09:47:04 +0000-->
+                                </date>
                             </datePicker>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Horario:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MHL-6d-hOz">
                                 <rect key="frame" x="20" y="510" width="130" height="60"/>
@@ -584,6 +587,8 @@
                         <outlet property="Btn_Añadir" destination="o8d-At-cKn" id="Li3-Ok-pRo"/>
                         <outlet property="descripcion_local" destination="927-Yp-EHi" id="S3w-s2-cht"/>
                         <outlet property="direccion_local" destination="k3y-uy-9Zr" id="bv9-bj-jKd"/>
+                        <outlet property="horario_apertura" destination="iRg-ma-2ZF" id="ra0-hz-Mx7"/>
+                        <outlet property="horario_cierre" destination="qeK-6j-57c" id="s5N-gh-zcH"/>
                         <outlet property="name_local" destination="la5-f6-RL0" id="6cf-M4-Lwm"/>
                         <outlet property="telefono_local" destination="ohy-M0-Hdf" id="rd9-Pg-3Wz"/>
                     </connections>
@@ -827,8 +832,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <menu key="menu" id="T6T-CX-1Z8">
                                     <children>
-                                        <command title="Item 1" id="EfX-PQ-AMo"/>
-                                        <command title="Item 2" id="Uxj-80-SZt"/>
+                                        <command title="1" id="EfX-PQ-AMo"/>
+                                        <command title="2" id="Uxj-80-SZt"/>
+                                        <command title="3" id="GNV-ab-pYb"/>
                                     </children>
                                 </menu>
                                 <state key="normal" title="Pines">
@@ -899,6 +905,9 @@
                     <connections>
                         <outlet property="descripcion_sensor" destination="UdO-qJ-lIa" id="j1o-pX-P8f"/>
                         <outlet property="name_sensor" destination="RQ3-IY-gd5" id="LcU-YM-icF"/>
+                        <outlet property="pin1" destination="l76-tW-m0x" id="H6c-Nd-cFi"/>
+                        <outlet property="pin2" destination="edY-aH-lYX" id="ghZ-TY-GBJ"/>
+                        <outlet property="pin3" destination="BnW-r4-2NQ" id="HGI-VH-pya"/>
                         <outlet property="tipo_sensor" destination="xM1-mc-j1N" id="F7j-AD-trs"/>
                     </connections>
                 </viewController>
@@ -1026,9 +1035,12 @@
                                 <color key="backgroundColor" red="1" green="0.94833026529999997" blue="0.33640198389999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Apagar/encender">
+                                <buttonConfiguration key="configuration" style="plain" title="Actualizar">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="40"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="Actualizar:" destination="OoQ-7c-hzf" eventType="touchUpInside" id="rM9-1g-v8h"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="MCi-Mp-zrl"/>
