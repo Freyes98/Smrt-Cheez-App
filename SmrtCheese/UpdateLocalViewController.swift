@@ -12,6 +12,7 @@ class UpdateLocalViewController: UIViewController {
     var local: Queseria?
     
     @IBOutlet weak var name_local: UITextField!
+    @IBOutlet weak var ScrollViewController: UIScrollView!
     @IBOutlet weak var telefono_local: UITextField!
     @IBOutlet weak var address_local: UITextField!
     @IBOutlet weak var horario_local: UITextField!
@@ -19,6 +20,10 @@ class UpdateLocalViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardApear), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDisapear), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         
         name_local.text = local?.nombreQueseria
@@ -29,6 +34,21 @@ class UpdateLocalViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    var isExpand : Bool = false
+    @objc func keyboardApear() {
+        if !isExpand{
+            self.ScrollViewController.contentSize = CGSize(width: self.view.frame.width, height: self.ScrollViewController.frame.height + 250)
+            isExpand = true
+        }
+    }
+    @objc func keyboardDisapear(){
+        if isExpand{
+            self.ScrollViewController.contentSize = CGSize(width: self.view.frame.width, height: self.ScrollViewController.frame.height - 250)
+            self.isExpand = false
+        }
+
+    }
+    
     
 
     @IBAction func updateAction(_ sender: Any) {

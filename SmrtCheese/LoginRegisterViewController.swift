@@ -11,6 +11,7 @@ import SwiftUI
 import Network
 
 class LoginRegisterViewController: UIViewController {
+    @IBOutlet weak var scrollviewController: UIScrollView!
     @IBOutlet weak var MySegmentedControl: UISegmentedControl!
     @IBOutlet weak var Mymaillogin: UITextField!
     @IBOutlet weak var Mynameregistrer: UITextField!
@@ -27,8 +28,10 @@ class LoginRegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardApear), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDisapear), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         //textfields
         Mymaillogin.isHidden = false
@@ -55,7 +58,20 @@ class LoginRegisterViewController: UIViewController {
             //self.present(homeTabBarController,animated: false,completion: nil)
             
         }
-        
+    }
+    var isExpand : Bool = false
+    @objc func keyboardApear() {
+        if !isExpand{
+            self.scrollviewController.contentSize = CGSize(width: self.view.frame.width, height: self.scrollviewController.frame.height + 250)
+            isExpand = true
+        }
+    }
+    @objc func keyboardDisapear(){
+        if isExpand{
+            self.scrollviewController.contentSize = CGSize(width: self.view.frame.width, height: self.scrollviewController.frame.height - 250)
+            self.isExpand = false
+        }
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
