@@ -10,6 +10,7 @@ import UIKit
 class SensoresViewController: UIViewController {
 
     var sensors : [Sensor] = []
+    var seccion : Seccion?
     var recibir_id : String?
     var enviar_id : String?
     var sensor: Sensor?
@@ -35,9 +36,10 @@ class SensoresViewController: UIViewController {
         Api.shared.Sensor_user(tkn: tkn,id_sensor: recibir_id ?? ""){ [self](result) in
             switch result {
             case .success(let json):
-                let countt = (json as! Sensores).count
+                
+                //let countt = (json as! Sensores).count
                 sensors = json as! [Sensor]
-                print(countt)
+                
             case .failure(let err):
                 print(err.localizedDescription)
  }
@@ -83,7 +85,7 @@ class SensoresViewController: UIViewController {
         
         
         
-        labelselecion.text = recibir_id
+        labelselecion.text = seccion?.nombreApartado
         self.TablaSensores.addSubview(refreshControl)
         
         

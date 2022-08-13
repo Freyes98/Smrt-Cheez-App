@@ -41,7 +41,7 @@ class SensorValuesViewController: UIViewController {
             sensor_img.image = UIImage(named: "humo.png")
         }
         else if sensor?.tipo == "infrarojo"{
-            sensor_img.image = UIImage(named: "Infrarojo.png")
+            sensor_img.image = UIImage(named: "Infrarrojo.png")
         }
         
         // Do any additional setup after loading the view.

@@ -112,6 +112,7 @@ class SeccionesViewController: UIViewController {
         if segue.identifier == "enviar_id_sensor"{
             let sensor = segue.destination as! SensoresViewController
             sensor.recibir_id = enviar_id
+            sensor.seccion = seccion
             
         }
     }
@@ -163,6 +164,7 @@ extension SeccionesViewController: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         self.enviar_id = Apartados[indexPath.row].id
+        self.seccion = Apartados[indexPath.row]
         self.performSegue(withIdentifier: "enviar_id_sensor", sender: self)
     }
     
@@ -190,9 +192,9 @@ extension SeccionesViewController: UITableViewDelegate,UITableViewDataSource{
                 switch result {
             //
                 case .success(let json):
-                    let countt = (json as! Secciones).count
+                    //let countt = (json as! Secciones).count
                     Apartados = json as! [Seccion]
-                    print(countt)
+                    //print(countt)
             //
                 case .failure(let err):
                     print(err.localizedDescription)
