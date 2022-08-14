@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddLocalViewController: UIViewController {
+class AddLocalViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var descripcion_local: UITextField!
     
     @IBOutlet weak var direccion_local: UITextField!
@@ -23,11 +23,20 @@ class AddLocalViewController: UIViewController {
         super.viewDidLoad()
         
         //horario_apertura.Format = DateTimePickerFormat.Custom
+        telefono_local.delegate = self
    
      
 
         // Do any additional setup after loading the view.
     }
+    //funcion para ingresar solo numeros
+    func textField(_ _textField:UITextField,shouldChangeCharactersIn range: NSRange,replacementString string:
+        String)-> Bool{
+        
+        let caracteres = CharacterSet.decimalDigits
+        let caracterSet = CharacterSet(charactersIn:string)
+        return caracteres.isSuperset(of:caracterSet)
+        }
     
     @IBAction func Add_action(_ sender: Any) {
         

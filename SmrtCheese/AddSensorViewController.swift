@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddSensorViewController: UIViewController {
+class AddSensorViewController: UIViewController,  UITextFieldDelegate {
 
     @IBOutlet weak var Tipo_sensor: UIButton!
     var id_seccion: String?
@@ -37,6 +37,11 @@ class AddSensorViewController: UIViewController {
         self.pin1.isHidden = true
         self.pin2.isHidden = true
         self.pin3.isHidden = true
+        
+        pin1.delegate = self
+        pin2.delegate = self
+        pin3.delegate = self
+        
         
         Menu.addAction(UIAction(handler: {(_)in print("action")}), for: .touchUpInside)
         Menu.menu = addMenuItems()
@@ -178,6 +183,14 @@ class AddSensorViewController: UIViewController {
         }
         
     }
+    //funcion para ingresar solo numeros
+    func textField(_ _textField:UITextField,shouldChangeCharactersIn range: NSRange,replacementString string:
+        String)-> Bool{
+        
+        let caracteres = CharacterSet.decimalDigits
+        let caracterSet = CharacterSet(charactersIn:string)
+        return caracteres.isSuperset(of:caracterSet)
+        }
 
 
     @IBAction func Pines(_ sender: Any) {

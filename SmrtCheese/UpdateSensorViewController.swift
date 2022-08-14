@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UpdateSensorViewController: UIViewController {
+class UpdateSensorViewController: UIViewController, UITextFieldDelegate{
 
     var sensor : Sensor?
     
@@ -27,6 +27,13 @@ class UpdateSensorViewController: UIViewController {
         
         
     }
-    
+    //funcion para ingresar solo numeros
+    func textField(_ _textField:UITextField,shouldChangeCharactersIn range: NSRange,replacementString string:
+        String)-> Bool{
+        
+        let caracteres = CharacterSet.decimalDigits
+        let caracterSet = CharacterSet(charactersIn:string)
+        return caracteres.isSuperset(of:caracterSet)
+        }
 
 }

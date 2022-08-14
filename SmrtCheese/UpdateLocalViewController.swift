@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UpdateLocalViewController: UIViewController {
+class UpdateLocalViewController: UIViewController, UITextFieldDelegate {
 
     var local: Queseria?
     
@@ -19,6 +19,7 @@ class UpdateLocalViewController: UIViewController {
     @IBOutlet weak var descripcion_local: UITextField!
     
     override func viewDidLoad() {
+        telefono_local.delegate = self
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardApear), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -48,6 +49,14 @@ class UpdateLocalViewController: UIViewController {
         }
 
     }
+    //funcion para ingresar solo numeros
+    func textField(_ _textField:UITextField,shouldChangeCharactersIn range: NSRange,replacementString string:
+        String)-> Bool{
+        
+        let caracteres = CharacterSet.decimalDigits
+        let caracterSet = CharacterSet(charactersIn:string)
+        return caracteres.isSuperset(of:caracterSet)
+        }
     
     
 
