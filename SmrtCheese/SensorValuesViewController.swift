@@ -7,9 +7,12 @@
 
 import UIKit
 import Alamofire
+import Foundation
+
 class SensorValuesViewController: UIViewController {
 
     var sensor: Sensor?
+    var tkn: Token?
     
     @IBOutlet weak var sensor_img: UIImageView!
     @IBOutlet weak var name_sensor: UILabel!
@@ -22,7 +25,7 @@ class SensorValuesViewController: UIViewController {
         let datos = UserDefaults.standard
         let token = datos.value(forKey: "token") as? String
             
-        let tkn = Token(type: nil, token: token)
+        self.tkn = Token(type: nil, token: token)
         
         
         name_sensor.text = sensor?.nombreSensor
@@ -44,21 +47,19 @@ class SensorValuesViewController: UIViewController {
             sensor_img.image = UIImage(named: "Infrarrojo.png")
         }
         
+        
+        
+        Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(SensorValuesViewController.sayHello), userInfo: nil, repeats: true)
+
+        
+        
         // Do any additional setup after loading the view.
-        Api.shared.Sensor_lastValue(tkn: tkn, id_sensor: "62f2f560eb0eb706a86922c6"){(result) in
+        Api.shared.Sensor_lastValue(tkn: self.tkn!, id_sensor: (sensor?.id)!){(result) in
             switch result {
             case .success(let json):
                 
                 
                 self.value_sensor.text = "\(Int((json as! Value).value))"
-                //let tkn = (json as! ResponseProfile).email
-                //let value = (json as! Value)
-                //Apartados = json as! [Seccion]
-                //print(countt)
-                
-                
-                //Guardado de datos
-                //rint(json.publisher.last())
                 
     
             case .failure(let err):
@@ -66,28 +67,38 @@ class SensorValuesViewController: UIViewController {
         }
         }
     
-
-
-
 }
-    @IBAction func Actualizar(_ sender: Any) {
+    
+    
+
+    @objc func sayHello()
+    {
         
-        let datos = UserDefaults.standard
-        let token = datos.value(forKey: "token") as? String
-            
-        let tkn = Token(type: nil, token: token)
+        //name_sensor.text = sensor?.nombreSensor
+        // Do any additional setup after loading the view.
+        Api.shared.Sensor_lastValue(tkn: self.tkn!, id_sensor: (sensor?.id)!){(result) in
+            switch result {
+            case .success(let json):
+                
+                self.value_sensor.text = "\(Int((json as! Value).value))"
+    
+            case .failure(let err):
+                print(err.localizedDescription)
+        }
+        }
+    }
+    
+    
+    @IBAction func Actualizar(_ sender: Any) {
         
         
         name_sensor.text = sensor?.nombreSensor
         // Do any additional setup after loading the view.
-        Api.shared.Sensor_lastValue(tkn: tkn, id_sensor: "62f2f560eb0eb706a86922c6"){(result) in
+        Api.shared.Sensor_lastValue(tkn: self.tkn!, id_sensor:(sensor?.id)!){(result) in
             switch result {
             case .success(let json):
                 
-                
                 self.value_sensor.text = "\(Int((json as! Value).value))"
-
-                
     
             case .failure(let err):
                 print(err.localizedDescription)
