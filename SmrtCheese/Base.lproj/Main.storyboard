@@ -1522,8 +1522,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="VY5-jL-jhS"/>
                     <connections>
+                        <outlet property="Menu" destination="Hdd-kz-JU8" id="kDQ-DQ-tQS"/>
+                        <outlet property="Menutipo" destination="AsQ-XU-sSw" id="lnH-Hn-ro7"/>
                         <outlet property="descripcion_sensor" destination="Zwh-K6-p76" id="HHg-51-oFL"/>
                         <outlet property="name_sensor" destination="bM8-W5-jDf" id="CfI-CK-ziT"/>
+                        <outlet property="pin1" destination="3Jj-St-Hge" id="FJi-Yd-6TQ"/>
+                        <outlet property="pin2" destination="E5U-td-SaS" id="06v-X7-3jv"/>
+                        <outlet property="pin3" destination="oGh-rw-eAS" id="E8z-Mm-V1q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bNi-Q2-d12" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
