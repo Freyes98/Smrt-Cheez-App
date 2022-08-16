@@ -370,11 +370,11 @@ final class Api {
         }
     }
     
-    func update_Sensor(sensor: SensorEnc,id:String, completionHandler: @escaping (Bool) ->()){
-        let url_Update_seccion = "\(url_base)apartados/\(id)/update"
+    func update_Sensor(sensor: SensorEnc,id_sensor:String, completionHandler: @escaping (Bool) ->()){
+        let url_Update_seccion = "\(url_base)sensores/\(id_sensor)/update"
         let headers: HTTPHeaders = [.contentType("application/json")]
         
-        AF.request(url_Update_seccion,method:.patch,parameters:sensor,encoder:JSONParameterEncoder.default, headers: headers).response{ response in
+        AF.request(url_Update_seccion,method:.put,parameters:sensor,encoder:JSONParameterEncoder.default, headers: headers).response{ response in
             debugPrint(response)
             
             switch response.result{

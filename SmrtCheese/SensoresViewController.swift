@@ -105,7 +105,9 @@ class SensoresViewController: UIViewController {
         }
         if segue.identifier == "enviar_update"{
             let update_sensor = segue.destination as! UpdateSensorViewController
+            update_sensor.id_sensor = sensor?.id
             update_sensor.sensor = sensor
+            
         }
         //este sera para enviar id del sensor seleccionado a la pantalla sensor
         

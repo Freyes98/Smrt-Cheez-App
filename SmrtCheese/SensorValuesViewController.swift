@@ -27,6 +27,7 @@ class SensorValuesViewController: UIViewController {
             
         self.tkn = Token(type: nil, token: token)
         
+        self.value_sensor.text = "Leyendo datos..."
         
         name_sensor.text = sensor?.nombreSensor
         
@@ -58,8 +59,12 @@ class SensorValuesViewController: UIViewController {
             switch result {
             case .success(let json):
                 
-                
-                self.value_sensor.text = "\(Int((json as! Value).value))"
+                if (json != nil){
+                    self.value_sensor.text = "\(Int((json as! Value).value))"
+                }
+                else {
+                    self.value_sensor.text = "N/A"
+                }
                 
     
             case .failure(let err):
@@ -80,8 +85,12 @@ class SensorValuesViewController: UIViewController {
             switch result {
             case .success(let json):
                 
-                self.value_sensor.text = "\(Int((json as! Value).value))"
-    
+                if (json != nil){
+                    self.value_sensor.text = "\(Int((json as! Value).value))"
+                }
+                else {
+                    self.value_sensor.text = "N/A"
+                }
             case .failure(let err):
                 print(err.localizedDescription)
         }
