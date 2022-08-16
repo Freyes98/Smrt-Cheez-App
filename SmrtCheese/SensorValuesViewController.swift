@@ -8,11 +8,13 @@
 import UIKit
 import Alamofire
 import Foundation
+import PusherSwift
 
-class SensorValuesViewController: UIViewController {
+class SensorValuesViewController: UIViewController, PusherDelegate {
 
     var sensor: Sensor?
     var tkn: Token?
+    var pusher : Pusher!
     
     @IBOutlet weak var sensor_img: UIImageView!
     @IBOutlet weak var name_sensor: UILabel!
@@ -50,37 +52,58 @@ class SensorValuesViewController: UIViewController {
         
         
         
-        Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(SensorValuesViewController.sayHello), userInfo: nil, repeats: true)
+        let options = PusherClientOptions(
+                host: .cluster("us3")
+              )
+
+              pusher = Pusher(
+                key: "7e7ee4a9a85f45b68802",
+                options: options
+              )
+
+              pusher.delegate = self
+
+              // subscribe to channel
+              let channel = pusher.subscribe("Smrtchess")
+
+              // bind a callback to handle an event
+            channel.bind(eventName: "my-event", eventCallback: { [self] (event: PusherEvent) in
+                  if event.data != nil {
+                    // you can parse the data as necessary
+                      Api.shared.Sensor_lastValue(tkn: self.tkn!, id_sensor: (self.sensor?.id)!){(result) in
+                          switch result {
+                          case .success(let json):
+                              
+                              if (json != nil){
+                                  self.value_sensor.text = "\(Int((json as! Value).value))"
+                              }
+                              else {
+                                  self.value_sensor.text = "N/A"
+                              }
+                          case .failure(let err):
+                              print(err.localizedDescription)
+                      }
+                      }
+                      
+                  }
+              })
+
+              pusher.connect()
+        
+        
+        //Funcion para solicitar datos cada 3 segundos
+        //Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(SensorValuesViewController.sayHello), userInfo: nil, repeats: true)
 
         
-        
-        // Do any additional setup after loading the view.
-        Api.shared.Sensor_lastValue(tkn: self.tkn!, id_sensor: (sensor?.id)!){(result) in
-            switch result {
-            case .success(let json):
-                
-                if (json != nil){
-                    self.value_sensor.text = "\(Int((json as! Value).value))"
-                }
-                else {
-                    self.value_sensor.text = "N/A"
-                }
-                
-    
-            case .failure(let err):
-                print(err.localizedDescription)
-        }
-        }
     
 }
-    
+ 
+
     
 
     @objc func sayHello()
     {
-        
-        //name_sensor.text = sensor?.nombreSensor
-        // Do any additional setup after loading the view.
+
         Api.shared.Sensor_lastValue(tkn: self.tkn!, id_sensor: (sensor?.id)!){(result) in
             switch result {
             case .success(let json):
@@ -106,8 +129,14 @@ class SensorValuesViewController: UIViewController {
         Api.shared.Sensor_lastValue(tkn: self.tkn!, id_sensor:(sensor?.id)!){(result) in
             switch result {
             case .success(let json):
-                
-                self.value_sensor.text = "\(Int((json as! Value).value))"
+
+                if (json != nil){
+                    self.value_sensor.text = "\(Int((json as! Value).value))"
+                }
+                else {
+                    self.value_sensor.text = "N/A"
+                }
+
     
             case .failure(let err):
                 print(err.localizedDescription)
