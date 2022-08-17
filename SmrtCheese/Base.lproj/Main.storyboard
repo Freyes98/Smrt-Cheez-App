@@ -226,34 +226,34 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Usuario" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCE-YZ-LoR">
-                                <rect key="frame" x="0.0" y="210" width="1024" height="51.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="43"/>
+                                <rect key="frame" x="0.0" y="210" width="1024" height="70.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="59"/>
                                 <color key="textColor" systemColor="systemYellowColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombre:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RNr-NT-QZi">
-                                <rect key="frame" x="20" y="311.5" width="107.5" height="35"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <rect key="frame" x="20" y="330.5" width="116.5" height="39.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="33"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apellido:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tHY-YZ-s7O">
-                                <rect key="frame" x="20" y="376.5" width="108.5" height="35"/>
+                                <rect key="frame" x="20" y="400" width="111.5" height="38.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="76" id="eQn-Wu-ygW"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Correo:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uiV-oW-EFk">
-                                <rect key="frame" x="20" y="441.5" width="92" height="35"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <rect key="frame" x="20" y="468.5" width="96.5" height="38.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rLn-Zj-Hja">
-                                <rect key="frame" x="20" y="536.5" width="984" height="60"/>
+                                <rect key="frame" x="20" y="567" width="984" height="60"/>
                                 <color key="backgroundColor" red="1" green="0.94833026529999997" blue="0.33640198389999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="Eoe-rk-pcO"/>
@@ -268,22 +268,22 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V3M-Is-V3f">
-                                <rect key="frame" x="287.5" y="301.5" width="716.5" height="44.5"/>
+                                <rect key="frame" x="296.5" y="320.5" width="707.5" height="44.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L7x-HN-q45">
-                                <rect key="frame" x="288.5" y="366" width="715.5" height="44.5"/>
+                                <rect key="frame" x="291.5" y="385" width="712.5" height="44.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RFI-zm-qFb">
-                                <rect key="frame" x="292" y="430.5" width="712" height="44.5"/>
+                                <rect key="frame" x="296.5" y="449.5" width="707.5" height="44.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KgE-0Y-F6f">
-                                <rect key="frame" x="20" y="636.5" width="984" height="60"/>
+                                <rect key="frame" x="20" y="667" width="984" height="60"/>
                                 <color key="backgroundColor" red="1" green="0.94833026529999997" blue="0.33640198389999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="ovR-bR-xo3"/>
@@ -1094,25 +1094,25 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="medida" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wmR-lU-Edo">
-                                <rect key="frame" x="20" y="580" width="984" height="66"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="55"/>
+                                <rect key="frame" x="20" y="580" width="984" height="81.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="68"/>
                                 <color key="textColor" systemColor="systemOrangeColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dOv-kr-4hs">
-                                <rect key="frame" x="20" y="726" width="984" height="62"/>
+                                <rect key="frame" x="20" y="741.5" width="984" height="62"/>
                                 <color key="backgroundColor" red="1" green="0.94833026529999997" blue="0.33640198389999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Actualizar">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="40"/>
+                                    <fontDescription key="titleFontDescription" type="system" weight="thin" pointSize="40"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="Actualizar:" destination="OoQ-7c-hzf" eventType="touchUpInside" id="rM9-1g-v8h"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1tS-3d-smo">
-                                <rect key="frame" x="20" y="828" width="984" height="60"/>
+                                <rect key="frame" x="20" y="843.5" width="984" height="60"/>
                                 <color key="backgroundColor" red="1" green="0.94833026529999997" blue="0.33640198389999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="aDx-Ag-uv3"/>
@@ -1120,7 +1120,7 @@
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Historial">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="40"/>
+                                    <fontDescription key="titleFontDescription" type="system" weight="thin" pointSize="40"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <segue destination="VDi-cA-37q" kind="show" identifier="historial" id="XrM-UA-Hrw"/>

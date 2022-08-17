@@ -582,7 +582,7 @@
 				CODE_SIGN_ENTITLEMENTS = SmrtCheese/SmrtCheese.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = BZKG5NB8Z7;
+				DEVELOPMENT_TEAM = U8TU5SD966;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SmrtCheese/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -611,7 +611,7 @@
 				CODE_SIGN_ENTITLEMENTS = SmrtCheese/SmrtCheese.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = BZKG5NB8Z7;
+				DEVELOPMENT_TEAM = U8TU5SD966;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SmrtCheese/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
