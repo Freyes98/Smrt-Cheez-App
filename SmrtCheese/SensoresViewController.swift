@@ -96,6 +96,7 @@ class SensoresViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.TablaSensores.reloadData()
+        
     }
     //paraenviar parametros
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -118,8 +119,6 @@ class SensoresViewController: UIViewController {
         }
     }
     
-  
-
 }
 extension SensoresViewController:UITableViewDelegate,UITableViewDataSource{
     

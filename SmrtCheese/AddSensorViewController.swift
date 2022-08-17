@@ -92,10 +92,10 @@ class AddSensorViewController: UIViewController,  UITextFieldDelegate {
                 self.Menutipo.setTitle("Ultrasonico", for: .normal)
                 
             }),
-            UIAction(title:"Humo", handler: {(_)in
+            UIAction(title:"Gas", handler: {(_)in
                 
-                self.tipo_sensor = "humo"
-                self.Menutipo.setTitle("Humo", for: .normal)
+                self.tipo_sensor = "gas"
+                self.Menutipo.setTitle("Gas", for: .normal)
                 
             }),
             UIAction(title:"Flama", handler: {(_)in
@@ -110,10 +110,10 @@ class AddSensorViewController: UIViewController,  UITextFieldDelegate {
                 self.Menutipo.setTitle("Temperatura", for: .normal)
             }),
             
-            UIAction(title:"Infrarojo", handler: {(_)in
+            UIAction(title:"Infrarrojo", handler: {(_)in
                 
-                self.tipo_sensor = "infrarojo"
-                self.Menutipo.setTitle("Infrarojo", for: .normal)
+                self.tipo_sensor = "infrarrojo"
+                self.Menutipo.setTitle("Infrarrojo", for: .normal)
             })
         
         

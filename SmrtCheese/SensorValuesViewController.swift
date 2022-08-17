@@ -52,6 +52,7 @@ class SensorValuesViewController: UIViewController, PusherDelegate {
         
         
         
+        
         let options = PusherClientOptions(
                 host: .cluster("us3")
               )
@@ -75,7 +76,41 @@ class SensorValuesViewController: UIViewController, PusherDelegate {
                           case .success(let json):
                               
                               if (json != nil){
-                                  self.value_sensor.text = "\(Int((json as! Value).value))"
+                                  if self.sensor?.tipo == "ultrasonico"{
+                                      self.value_sensor.text = "\(Int((json as! Value).value)) CM"
+                                  }
+                                  else if self.sensor?.tipo == "temperatura"{
+                                      self.value_sensor.text = "\(Int((json as! Value).value)) °C"
+                                  }
+                                  else if self.sensor?.tipo == "humo" {
+                                      
+                                      if (Int((json as! Value).value)) == 1{
+                                          self.value_sensor.text = "Humo detectado"
+                                      }
+                                      else{
+                                          self.value_sensor.text = "Humo no detectado"
+                                      }
+                                  }
+                                  else if self.sensor?.tipo == "infrarrojo" {
+                                      
+                                      if (Int((json as! Value).value)) == 1{
+                                          self.value_sensor.text = "Movimiento detectado"
+                                      }
+                                      else{
+                                          self.value_sensor.text = "Movimiento no detectados"
+                                      }
+                                  }
+                                  else if self.sensor?.tipo == "flama" {
+                                      
+                                      if (Int((json as! Value).value)) == 1{
+                                          self.value_sensor.textColor = .red
+                                          self.value_sensor.text = "Fuego detectado"
+                                      }
+                                      else{
+                                          self.value_sensor.textColor = .systemOrange
+                                          self.value_sensor.text = "fuego no detectado"
+                                      }
+                                  }
                               }
                               else {
                                   self.value_sensor.text = "N/A"
@@ -91,12 +126,14 @@ class SensorValuesViewController: UIViewController, PusherDelegate {
               pusher.connect()
         
         
+        
         //Funcion para solicitar datos cada 3 segundos
         //Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(SensorValuesViewController.sayHello), userInfo: nil, repeats: true)
 
         
     
 }
+    
  
 
     
@@ -117,6 +154,16 @@ class SensorValuesViewController: UIViewController, PusherDelegate {
             case .failure(let err):
                 print(err.localizedDescription)
         }
+        }
+    }
+    
+    //paraenviar parametros
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "historial"{
+            let value = segue.destination as! HistorialViewController
+            value.id_sensor = sensor?.id
+        
         }
     }
     

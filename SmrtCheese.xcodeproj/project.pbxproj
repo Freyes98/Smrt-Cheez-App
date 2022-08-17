@@ -10,6 +10,9 @@
 		0B05A236288F5C5600EE9EEE /* LocalesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B05A235288F5C5600EE9EEE /* LocalesViewController.swift */; };
 		0B05A238288F7C0300EE9EEE /* PerfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B05A237288F7C0200EE9EEE /* PerfilViewController.swift */; };
 		0B05A23A288FC2E500EE9EEE /* ProfileUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B05A239288FC2E500EE9EEE /* ProfileUser.swift */; };
+		0B0A447128ACCAA8004E56A7 /* HistorialCeldaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0A446F28ACCAA7004E56A7 /* HistorialCeldaTableViewCell.swift */; };
+		0B0A447228ACCAA8004E56A7 /* HistorialCeldaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B0A447028ACCAA7004E56A7 /* HistorialCeldaTableViewCell.xib */; };
+		0B0A447428ACCEA6004E56A7 /* HistorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0A447328ACCEA6004E56A7 /* HistorialViewController.swift */; };
 		0B0F4B7528A2B7530098A3E5 /* AddLocalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F4B7428A2B7530098A3E5 /* AddLocalViewController.swift */; };
 		0B0F4B7728A2B7810098A3E5 /* AddSeccionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F4B7628A2B7810098A3E5 /* AddSeccionViewController.swift */; };
 		0B32747D28A4F23400C84E3F /* UpdateLocalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B32747C28A4F23300C84E3F /* UpdateLocalViewController.swift */; };
@@ -67,11 +70,13 @@
 		0B05A235288F5C5600EE9EEE /* LocalesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalesViewController.swift; sourceTree = "<group>"; };
 		0B05A237288F7C0200EE9EEE /* PerfilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilViewController.swift; sourceTree = "<group>"; };
 		0B05A239288FC2E500EE9EEE /* ProfileUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUser.swift; sourceTree = "<group>"; };
+		0B0A446F28ACCAA7004E56A7 /* HistorialCeldaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorialCeldaTableViewCell.swift; sourceTree = "<group>"; };
+		0B0A447028ACCAA7004E56A7 /* HistorialCeldaTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistorialCeldaTableViewCell.xib; sourceTree = "<group>"; };
+		0B0A447328ACCEA6004E56A7 /* HistorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorialViewController.swift; sourceTree = "<group>"; };
 		0B0F4B7428A2B7530098A3E5 /* AddLocalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocalViewController.swift; sourceTree = "<group>"; };
 		0B0F4B7628A2B7810098A3E5 /* AddSeccionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSeccionViewController.swift; sourceTree = "<group>"; };
 		0B32747C28A4F23300C84E3F /* UpdateLocalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateLocalViewController.swift; sourceTree = "<group>"; };
 		0B32747E28A4FFED00C84E3F /* UpdateSeccionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateSeccionViewController.swift; sourceTree = "<group>"; };
-		0B78A43228AB63E000E12D8E /* SmrtCheese.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SmrtCheese.entitlements; sourceTree = "<group>"; };
 		0B81BEAC28A55D9F003CAC51 /* AddSensorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSensorViewController.swift; sourceTree = "<group>"; };
 		0B81BEAE28A5ABE9003CAC51 /* UpdateSensorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateSensorViewController.swift; sourceTree = "<group>"; };
 		0B81BEB028A5CBBE003CAC51 /* SensorValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorValues.swift; sourceTree = "<group>"; };
@@ -178,7 +183,6 @@
 		628EBCD4287A4CA4008EB003 /* SmrtCheese */ = {
 			isa = PBXGroup;
 			children = (
-				0B78A43228AB63E000E12D8E /* SmrtCheese.entitlements */,
 				0B9E41F1288A2AE400BDD87B /* Models */,
 				0B9E41EB288A28F200BDD87B /* Servidor */,
 				628EBCD5287A4CA4008EB003 /* AppDelegate.swift */,
@@ -206,6 +210,9 @@
 				0B81BEAC28A55D9F003CAC51 /* AddSensorViewController.swift */,
 				0B81BEAE28A5ABE9003CAC51 /* UpdateSensorViewController.swift */,
 				0B81BEB228A5D5CA003CAC51 /* SensorValuesViewController.swift */,
+				0B0A446F28ACCAA7004E56A7 /* HistorialCeldaTableViewCell.swift */,
+				0B0A447028ACCAA7004E56A7 /* HistorialCeldaTableViewCell.xib */,
+				0B0A447328ACCEA6004E56A7 /* HistorialViewController.swift */,
 			);
 			path = SmrtCheese;
 			sourceTree = "<group>";
@@ -341,6 +348,7 @@
 			files = (
 				628EBCE2287A4CA5008EB003 /* LaunchScreen.storyboard in Resources */,
 				628EBCDF287A4CA5008EB003 /* Assets.xcassets in Resources */,
+				0B0A447228ACCAA8004E56A7 /* HistorialCeldaTableViewCell.xib in Resources */,
 				0BB929DE2899051C00ACFE3E /* SeccionCeldaTableViewCell.xib in Resources */,
 				628EBCDD287A4CA4008EB003 /* Main.storyboard in Resources */,
 				0BB2FD12289213CF009BC49D /* LocalCeldaTableViewCell.xib in Resources */,
@@ -375,8 +383,10 @@
 				0B05A236288F5C5600EE9EEE /* LocalesViewController.swift in Sources */,
 				0BB929DD2899051C00ACFE3E /* SeccionCeldaTableViewCell.swift in Sources */,
 				0B32747D28A4F23400C84E3F /* UpdateLocalViewController.swift in Sources */,
+				0B0A447428ACCEA6004E56A7 /* HistorialViewController.swift in Sources */,
 				0B0F4B7728A2B7810098A3E5 /* AddSeccionViewController.swift in Sources */,
 				0B81BEAF28A5ABE9003CAC51 /* UpdateSensorViewController.swift in Sources */,
+				0B0A447128ACCAA8004E56A7 /* HistorialCeldaTableViewCell.swift in Sources */,
 				0BB2FD11289213CF009BC49D /* LocalCeldaTableViewCell.swift in Sources */,
 				0BB929E02899058200ACFE3E /* SeccionesViewController.swift in Sources */,
 				0BBA5DE8288EF05900FDB71F /* LoginUser.swift in Sources */,
