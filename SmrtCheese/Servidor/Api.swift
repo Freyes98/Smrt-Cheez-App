@@ -481,7 +481,7 @@ final class Api {
             }
         }
     }
-    func Sensor_Values(fecha: String,tkn:Token,id_sensor:String, completionHandler: @escaping Handler){
+    func Sensor_Values(tkn:Token,id_sensor:String, completionHandler: @escaping Handler){
         
         
         let url_values = "\(url_base)values/\(id_sensor)/get"
