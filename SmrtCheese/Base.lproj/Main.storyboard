@@ -948,55 +948,29 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="u77-M6-fsm">
-                                <rect key="frame" x="0.0" y="481" width="1024" height="835"/>
+                                <rect key="frame" x="0.0" y="190" width="1024" height="1126"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="celdaHistorial" id="MXh-iF-9rN">
-                                        <rect key="frame" x="0.0" y="44.5" width="1024" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="1024" height="51.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MXh-iF-9rN" id="3O5-gK-0vS">
-                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="51.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="gO3-o0-RPe">
-                                <rect key="frame" x="0.0" y="200" width="1024" height="216"/>
-                                <date key="minimumDate" timeIntervalSinceReferenceDate="682423200">
-                                    <!--2022-08-17 10:00:00 +0000-->
-                                </date>
-                            </datePicker>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xW0-uQ-FpB">
-                                <rect key="frame" x="455" y="426" width="114" height="50"/>
-                                <color key="backgroundColor" systemColor="systemYellowColor"/>
-                                <color key="tintColor" systemColor="labelColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Buscar">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="Buscar:" destination="VDi-cA-37q" eventType="touchUpInside" id="hhg-r5-Npb"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="9Cr-6r-CTG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="9Cr-6r-CTG" firstAttribute="bottom" secondItem="u77-M6-fsm" secondAttribute="bottom" id="2xz-Kn-nJc"/>
-                            <constraint firstItem="gO3-o0-RPe" firstAttribute="leading" secondItem="9Cr-6r-CTG" secondAttribute="leading" id="D8M-bf-UR7"/>
-                            <constraint firstItem="gO3-o0-RPe" firstAttribute="top" secondItem="h2j-sK-jwf" secondAttribute="bottom" constant="10" id="K4c-xk-i4t"/>
                             <constraint firstItem="u77-M6-fsm" firstAttribute="leading" secondItem="9Cr-6r-CTG" secondAttribute="leading" id="L7x-lJ-5dH"/>
-                            <constraint firstItem="gO3-o0-RPe" firstAttribute="leading" secondItem="9Cr-6r-CTG" secondAttribute="leading" id="OIY-uM-Z21"/>
-                            <constraint firstItem="xW0-uQ-FpB" firstAttribute="top" secondItem="gO3-o0-RPe" secondAttribute="bottom" constant="10" id="aOl-dd-2Be"/>
-                            <constraint firstItem="9Cr-6r-CTG" firstAttribute="trailing" secondItem="xW0-uQ-FpB" secondAttribute="trailing" constant="455" id="eRk-wT-M8M"/>
                             <constraint firstItem="h2j-sK-jwf" firstAttribute="leading" secondItem="9Cr-6r-CTG" secondAttribute="leading" constant="20" id="gQz-Wq-bzx"/>
-                            <constraint firstItem="9Cr-6r-CTG" firstAttribute="trailing" secondItem="gO3-o0-RPe" secondAttribute="trailing" id="iJs-bi-IZr"/>
-                            <constraint firstAttribute="trailing" secondItem="gO3-o0-RPe" secondAttribute="trailing" id="ibV-zX-nZN"/>
-                            <constraint firstItem="u77-M6-fsm" firstAttribute="top" secondItem="xW0-uQ-FpB" secondAttribute="bottom" constant="5" id="jaU-vn-Pot"/>
                             <constraint firstItem="9Cr-6r-CTG" firstAttribute="trailing" secondItem="h2j-sK-jwf" secondAttribute="trailing" constant="20" id="k04-bo-jIk"/>
+                            <constraint firstItem="u77-M6-fsm" firstAttribute="top" secondItem="h2j-sK-jwf" secondAttribute="bottom" id="qDe-Xn-ABB"/>
                             <constraint firstItem="h2j-sK-jwf" firstAttribute="top" secondItem="9Cr-6r-CTG" secondAttribute="top" constant="40" id="wHf-Bl-BT7"/>
-                            <constraint firstItem="xW0-uQ-FpB" firstAttribute="leading" secondItem="9Cr-6r-CTG" secondAttribute="leading" constant="455" id="xdM-JO-W15"/>
                             <constraint firstItem="u77-M6-fsm" firstAttribute="trailing" secondItem="9Cr-6r-CTG" secondAttribute="trailing" id="yjC-HB-o5y"/>
                         </constraints>
                     </view>
