@@ -23,11 +23,21 @@ class LoginRegisterViewController: UIViewController {
     @IBOutlet weak var mypasswordregistrer: UITextField!
     @IBOutlet weak var Myregistrerbutton: UIButton!
     @IBOutlet weak var ImageLogo: UIImageView!
+        
     
+    var isExpand : Bool = false
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Mymaillogin.delegate = self
+        Mypasswordlogin.delegate = self
+        
+        Mynameregistrer.delegate = self
+        Mylastnameregistrer.delegate = self
+        Mymailregistrer.delegate = self
+        mypasswordregistrer.delegate = self
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardApear), name: UIResponder.keyboardWillShowNotification, object: nil)
         
@@ -48,6 +58,7 @@ class LoginRegisterViewController: UIViewController {
         Myregistrerbutton.isHidden = true
         ImageLogo.isHidden = false
         
+
         //comprobacion de autentificacion
     
         let datos = UserDefaults.standard
@@ -58,8 +69,10 @@ class LoginRegisterViewController: UIViewController {
             //self.present(homeTabBarController,animated: false,completion: nil)
             
         }
+        
+     
     }
-    var isExpand : Bool = false
+    
     @objc func keyboardApear() {
         if !isExpand{
             self.scrollviewController.contentSize = CGSize(width: self.view.frame.width, height: self.scrollviewController.frame.height + 250)
@@ -111,121 +124,18 @@ class LoginRegisterViewController: UIViewController {
         
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     //Buttom actions
     
 
     @IBAction func IniciarSesion(_ sender: Any) {
         
-        guard let email = Mymaillogin.text, let password = Mypasswordlogin.text else {
-            return
-        }
-     
-        let usuario = LoginUser(email: email, password: password)
-        
-        Api.shared.Login_user(usuario: usuario){(result) in
-            switch result {
-            case .success(let json):
-                let tkn = (json as! Response).token.token
-                
-                //Guardado de datos
-                let datos = UserDefaults.standard
-                datos.set(tkn, forKey: "token")
-                datos.synchronize()
-                
-                //Borrar datos
-                //esto ira en el logout
-                
-                //let datos = UserDefaults.standard
-                //datos.removeObject(forKey: "token")
-                //datos.synchronize()
-                
-                let homeTabBarController = self.storyboard?.instantiateViewController(withIdentifier: "HomeTabBarController") as! HomeTabBarController
-                
-                self.present(homeTabBarController,animated: true,completion: nil)
-
-            case .failure(_):
-                let alert = UIAlertController(title: "Error", message: "Usuario no encontrado", preferredStyle: UIAlertController.Style.alert)
-
-                        // add an action (button)
-                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-
-                        // show the alert
-                        self.present(alert, animated: true, completion: nil)}
-        }
+        self.login()
     }
-        
     
     
     @IBAction func Register(_ sender: Any) {
         
-        guard let email = Mymailregistrer.text, let password = mypasswordregistrer.text, let firstname = Mynameregistrer.text, let lastname = Mylastnameregistrer.text else {
-            return
-        }
-        let usuario = User(email: email, password: password,fname: firstname, lname: lastname)
-        
-        Api.shared.Register_user(usuario: usuario){(isSucess) in
-            if isSucess {
-            let alert = UIAlertController(title: "Registro", message: "Usuario registrado correctamente", preferredStyle: UIAlertController.Style.alert)
-
-                    // add an action (button)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-                
-                    // show the alert
-                    self.present(alert, animated: true, completion: nil)
-                self.MySegmentedControl.selectedSegmentIndex = 0
-                if self.MySegmentedControl.selectedSegmentIndex == 0
-                {
-                    self.Mymaillogin.isHidden = false
-                    self.Mypasswordlogin.isHidden = false
-                    self.Mynameregistrer.isHidden = true
-                    self.Mynameregistrer.isHidden = true
-                    self.Mymailregistrer.isHidden = true
-                    self.Mylastnameregistrer.isHidden = true
-                    self.mypasswordregistrer.isHidden = true
-                    self.forgotpassword.isHidden = false
-                    self.Login.isHidden = false
-                    self.Myregistrerbutton.isHidden = true
-                }
-                else{
-                   
-                    
-                    self.Mymaillogin.isHidden = true
-                    self.Mypasswordlogin.isHidden = true
-                    self.Mynameregistrer.isHidden = false
-                    self.Mynameregistrer.isHidden = false
-                    self.Mymailregistrer.isHidden = false
-                    self.mypasswordregistrer.isHidden = false
-                    self.Mylastnameregistrer.isHidden = false
-                    self.forgotpassword.isHidden = true
-                    self.Login.isHidden = true
-                    self.Myregistrerbutton.isHidden = false
-                }
-            }
-            
-            else {
-                let alert = UIAlertController(title: "Registro", message: "El usuario ya existe", preferredStyle: UIAlertController.Style.alert)
-
-                        // add an action (button)
-                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-
-                        // show the alert
-                        self.present(alert, animated: true, completion: nil)}
-        }
-        Mymailregistrer.text=""
-        mypasswordregistrer.text=""
-        Mynameregistrer.text=""
-        Mylastnameregistrer.text=""
-        
+        self.registro()
         
     }
 
@@ -260,5 +170,106 @@ class LoginRegisterViewController: UIViewController {
     
 }
 
+extension LoginRegisterViewController: UITextFieldDelegate{
+    
+    func registro(){
+        
+        let email = Mynameregistrer.text
+        let firstname = Mylastnameregistrer.text
+        let lastname = Mymailregistrer.text
+        let password = mypasswordregistrer.text
+        
+        
+        let usuario = User(email: email, password: password,fname: firstname, lname: lastname)
+        
+        Api.shared.Register_user(usuario: usuario){(isSucess) in
+            if isSucess {
+            let alert = UIAlertController(title: "Registro", message: "Usuario registrado correctamente", preferredStyle: UIAlertController.Style.alert)
+
+                    // add an action (button)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                
+                    // show the alert
+                    self.present(alert, animated: true, completion: nil)
+                    }
+            
+            else {
+                let alert = UIAlertController(title: "Registro", message: "El usuario ya existe", preferredStyle: UIAlertController.Style.alert)
+
+                        // add an action (button)
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+
+                        // show the alert
+                        self.present(alert, animated: true, completion: nil)}
+        }
+        Mymailregistrer.text=""
+        mypasswordregistrer.text=""
+        Mynameregistrer.text=""
+        Mylastnameregistrer.text=""
+       
+        
+    }
+    func login(){
+        let email = Mymaillogin.text
+        let password = Mypasswordlogin.text
+     
+        let usuario = LoginUser(email: email, password: password)
+        
+        Api.shared.Login_user(usuario: usuario){(result) in
+            switch result {
+            case .success(let json):
+                let tkn = (json as! Response).token.token
+                
+                //Guardado de datos
+                let datos = UserDefaults.standard
+                datos.set(tkn, forKey: "token")
+                datos.synchronize()
+                
+                let homeTabBarController = self.storyboard?.instantiateViewController(withIdentifier: "HomeTabBarController") as! HomeTabBarController
+                
+                self.present(homeTabBarController,animated: true,completion: nil)
+
+            case .failure(_):
+                let alert = UIAlertController(title: "Error", message: "Usuario no encontrado", preferredStyle: UIAlertController.Style.alert)
+
+                        // add an action (button)
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+
+                        // show the alert
+                        self.present(alert, animated: true, completion: nil)}
+    }
+        
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        if textField == Mynameregistrer{
+            Mylastnameregistrer.becomeFirstResponder()
+        }
+        if textField == Mylastnameregistrer{
+            Mymailregistrer.becomeFirstResponder()
+        }
+        if textField == Mymailregistrer{
+            mypasswordregistrer.becomeFirstResponder()
+        }
+        if textField == mypasswordregistrer{
+            
+            self.registro()
+            
+        }
+        
+        
+        
+        
+        if textField == Mymaillogin{
+            Mypasswordlogin.becomeFirstResponder()
+        }
+        if textField == Mypasswordlogin{
+            login()
+        
+    }
+        return true
+}
+}
 
 

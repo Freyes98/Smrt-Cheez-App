@@ -173,7 +173,7 @@ extension SensoresViewController:UITableViewDelegate,UITableViewDataSource{
           self.deleteAction(sensor: self.sensors[indexPath.row], indexpath: indexPath)
       }
         
-        editItem.backgroundColor = .black
+        editItem.backgroundColor = .systemYellow
         let swipeActions = UISwipeActionsConfiguration(actions: [deleteItem,editItem])
 
       return swipeActions

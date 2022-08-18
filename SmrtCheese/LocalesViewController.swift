@@ -112,7 +112,7 @@ extension LocalesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-      let editItem = UIContextualAction(style: .destructive, title: "Editar") {  (contextualAction, view, boolValue) in
+        let editItem = UIContextualAction(style: .destructive, title: "Editar") {  (contextualAction, view, boolValue) in
           //Code I want to do here
           self.local = self.Locales[indexPath.row]
           self.performSegue(withIdentifier: "enviar_edit", sender: self)
@@ -123,7 +123,7 @@ extension LocalesViewController: UITableViewDelegate, UITableViewDataSource {
             //Code I want to do here
           self.deleteAction(seccion: self.Locales[indexPath.row], indexpath: indexPath)
       }
-        editItem.backgroundColor = .black
+        editItem.backgroundColor = .systemYellow
         let swipeActions = UISwipeActionsConfiguration(actions: [deleteItem,editItem])
 
       return swipeActions

@@ -154,7 +154,7 @@ extension SeccionesViewController: UITableViewDelegate,UITableViewDataSource{
           self.deleteAction(seccion: self.Apartados[indexPath.row], indexpath: indexPath)
       }
         
-        editItem.backgroundColor = .black
+        editItem.backgroundColor = .systemYellow
         let swipeActions = UISwipeActionsConfiguration(actions: [deleteItem,editItem])
 
       return swipeActions
