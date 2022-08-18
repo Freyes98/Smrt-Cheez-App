@@ -128,8 +128,29 @@ extension SensoresViewController:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let celda = TablaSensores.dequeueReusableCell(withIdentifier: "celdaSensor", for: indexPath) as! SensorCeldaTableViewCell
-        celda.name_sensor.text = sensors[indexPath.row].nombreSensor
-        celda.tipo_sensor.text = sensors[indexPath.row].tipo
+        
+        //print(sensors[indexPath.row].tipo ?? "")
+        
+        if sensors[indexPath.row].tipo ?? "" == "ultrasonico"{
+            celda.img_sensor.image = UIImage(named: "Ultrasonico.png")
+        }
+        else if sensors[indexPath.row].tipo ?? "" == "temperatura"{
+            celda.img_sensor.image = UIImage(named: "Temperatura.png")
+        }
+        else if sensors[indexPath.row].tipo ?? "" == "flama"{
+            celda.img_sensor.image = UIImage(named: "Flama.png")
+        }
+        else if sensors[indexPath.row].tipo ?? "" == "gas"{
+            celda.img_sensor.image = UIImage(named: "humo.png")
+        }
+        else if sensors[indexPath.row].tipo ?? "" == "infrarrojo"{
+            celda.img_sensor.image = UIImage(named: "Infrarrojo.png")
+        }
+    
+        
+        
+        celda.name_sensor.text = sensors[indexPath.row].tipo
+        celda.tipo_sensor.text = sensors[indexPath.row].nombreSensor
         
         return celda
     }

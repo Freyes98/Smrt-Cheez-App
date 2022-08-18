@@ -91,14 +91,34 @@ class AddSensorViewController: UIViewController,  UITextFieldDelegate {
                 self.tipo_sensor = "ultrasonico"
                 self.Menutipo.setTitle("Ultrasonico", for: .normal)
                 
+                self.pin1.isHidden = false
+                self.pin2.isHidden = false
+                self.pin3.isHidden = true
+                
+                self.pin1.placeholder = "Trigger"
+                self.pin2.placeholder = "Echo"
+                
             }),
             UIAction(title:"Gas", handler: {(_)in
+             
+                self.pin1.placeholder = "Dat"
+                
+                self.pin1.isHidden = false
+                self.pin2.isHidden = true
+                self.pin3.isHidden = true
+                
                 
                 self.tipo_sensor = "gas"
                 self.Menutipo.setTitle("Gas", for: .normal)
                 
             }),
             UIAction(title:"Flama", handler: {(_)in
+                self.pin1.placeholder = "Dat"
+                
+                self.pin1.isHidden = false
+                self.pin2.isHidden = true
+                self.pin3.isHidden = true
+                
                 
                 self.tipo_sensor = "flama"
                 self.Menutipo.setTitle("Flama", for: .normal)
@@ -106,11 +126,25 @@ class AddSensorViewController: UIViewController,  UITextFieldDelegate {
             
             UIAction(title:"Temperatura", handler: {(_)in
                 
+                self.pin1.placeholder = "Dat"
+                
+                self.pin1.isHidden = false
+                self.pin2.isHidden = true
+                self.pin3.isHidden = true
+                
+                
                 self.tipo_sensor = "temperatura"
                 self.Menutipo.setTitle("Temperatura", for: .normal)
             }),
             
             UIAction(title:"Infrarrojo", handler: {(_)in
+                
+                self.pin1.placeholder = "Dat"
+                
+                self.pin1.isHidden = false
+                self.pin2.isHidden = true
+                self.pin3.isHidden = true
+                
                 
                 self.tipo_sensor = "infrarrojo"
                 self.Menutipo.setTitle("Infrarrojo", for: .normal)

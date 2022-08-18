@@ -9,6 +9,7 @@ import UIKit
 
 class SensorCeldaTableViewCell: UITableViewCell {
 
+ 
     @IBOutlet weak var img_sensor: UIImageView!
     @IBOutlet weak var tipo_sensor: UILabel!
     @IBOutlet weak var name_sensor: UILabel!

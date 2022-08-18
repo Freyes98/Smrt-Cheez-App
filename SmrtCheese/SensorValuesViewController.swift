@@ -46,7 +46,7 @@ class SensorValuesViewController: UIViewController, PusherDelegate {
         else if sensor?.tipo == "gas"{
             sensor_img.image = UIImage(named: "humo.png")
         }
-        else if sensor?.tipo == "infrarojo"{
+        else if sensor?.tipo == "infrarrojo"{
             sensor_img.image = UIImage(named: "Infrarrojo.png")
         }
         
