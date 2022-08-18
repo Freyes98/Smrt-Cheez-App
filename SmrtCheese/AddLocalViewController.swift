@@ -157,18 +157,17 @@ extension AddLocalViewController: UIPickerViewDelegate, UIPickerViewDataSource{
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
+        return horarios[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
         if pickerView == apertura_picker {
             apertura = horarios[row]
             
          } else if pickerView == Cierre_picker{
              cierre = horarios[row]
          }
-        
-        return horarios[row]
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
     }
     
 }
