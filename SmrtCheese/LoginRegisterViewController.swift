@@ -34,6 +34,9 @@ class LoginRegisterViewController: UIViewController {
         Mymaillogin.delegate = self
         Mypasswordlogin.delegate = self
         
+        Mymaillogin.text = ""
+        Mypasswordlogin.text = ""
+        
         Mynameregistrer.delegate = self
         Mylastnameregistrer.delegate = self
         Mymailregistrer.delegate = self

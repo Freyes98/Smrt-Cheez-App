@@ -54,18 +54,18 @@ class SensorValuesViewController: UIViewController, PusherDelegate {
         
         
         let options = PusherClientOptions(
-                host: .cluster("us3")
+                host: .cluster("us2")
               )
 
               pusher = Pusher(
-                key: "7e7ee4a9a85f45b68802",
+                key: "321a5c897ce91d5d3023",
                 options: options
               )
 
               pusher.delegate = self
 
               // subscribe to channel
-              let channel = pusher.subscribe("Smrtchess")
+              let channel = pusher.subscribe("Mi_Smrt")
 
               // bind a callback to handle an event
             channel.bind(eventName: "my-event", eventCallback: { [self] (event: PusherEvent) in
@@ -82,13 +82,13 @@ class SensorValuesViewController: UIViewController, PusherDelegate {
                                   else if self.sensor?.tipo == "temperatura"{
                                       self.value_sensor.text = "\(Int((json as! Value).value)) °C"
                                   }
-                                  else if self.sensor?.tipo == "humo" {
+                                  else if self.sensor?.tipo == "gas" {
                                       
                                       if (Int((json as! Value).value)) == 1{
-                                          self.value_sensor.text = "Humo detectado"
+                                          self.value_sensor.text = "Gas detectado"
                                       }
                                       else{
-                                          self.value_sensor.text = "Humo no detectado"
+                                          self.value_sensor.text = "Gas no detectado"
                                       }
                                   }
                                   else if self.sensor?.tipo == "infrarrojo" {
