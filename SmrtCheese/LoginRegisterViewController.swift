@@ -78,13 +78,13 @@ class LoginRegisterViewController: UIViewController {
     
     @objc func keyboardApear() {
         if !isExpand{
-            self.scrollviewController.contentSize = CGSize(width: self.view.frame.width, height: self.scrollviewController.frame.height + 250)
+            self.scrollviewController.contentSize = CGSize(width: self.view.frame.width, height: self.scrollviewController.frame.height + 300)
             isExpand = true
         }
     }
     @objc func keyboardDisapear(){
         if isExpand{
-            self.scrollviewController.contentSize = CGSize(width: self.view.frame.width, height: self.scrollviewController.frame.height - 250)
+            self.scrollviewController.contentSize = CGSize(width: self.view.frame.width, height: self.scrollviewController.frame.height - 300)
             self.isExpand = false
         }
 
@@ -245,24 +245,7 @@ extension LoginRegisterViewController: UITextFieldDelegate{
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        if textField == Mynameregistrer{
-            Mylastnameregistrer.becomeFirstResponder()
-        }
-        if textField == Mylastnameregistrer{
-            Mymailregistrer.becomeFirstResponder()
-        }
-        if textField == Mymailregistrer{
-            mypasswordregistrer.becomeFirstResponder()
-        }
-        if textField == mypasswordregistrer{
             
-            self.registro()
-            
-        }
-        
-        
-        
         
         if textField == Mymaillogin{
             Mypasswordlogin.becomeFirstResponder()

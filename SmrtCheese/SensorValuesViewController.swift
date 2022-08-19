@@ -75,7 +75,9 @@ class SensorValuesViewController: UIViewController, PusherDelegate {
                           switch result {
                           case .success(let json):
                               
+                              
                               if (json != nil){
+                                  
                                   if self.sensor?.tipo == "ultrasonico"{
                                       self.value_sensor.text = "\(Int((json as! Value).value)) CM"
                                   }
