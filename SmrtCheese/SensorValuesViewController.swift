@@ -82,6 +82,10 @@ class SensorValuesViewController: UIViewController, PusherDelegate {
                                       self.value_sensor.text = "\(Int((json as! Value).value)) CM"
                                   }
                                   else if self.sensor?.tipo == "temperatura"{
+                                      if ((Int((json as! Value).value) > 30)){
+                                          self.value_sensor.textColor = .red
+                                      }
+                                    
                                       self.value_sensor.text = "\(Int((json as! Value).value)) °C"
                                   }
                                   else if self.sensor?.tipo == "gas" {
